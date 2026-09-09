@@ -7,7 +7,6 @@
 - Meredith Bartel (Computer Science)
 
 # Project Topic Area
-- Deals
 - Maps
 - Web scraping
 - AI
