@@ -1,7 +1,6 @@
 # Brian Nguyen
 ## Contact Information
 Email: nguyeb2@mail.uc.edu
-Phone: 513-426-1629
 ## Experience
 ### Software Developer Intern
 *Medpace*
