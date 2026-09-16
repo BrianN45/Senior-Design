@@ -15,3 +15,15 @@ A tool that helps University of Cincinnati students find the best bar deals happ
 Name: Dr. Hrishikesh Vinayak Bhide  
 Department: Computer Science  
 Contact: bhidehk@ucmail.uc.edu
+
+## Project Abstract
+To do (Add Problem Statement Here as Well)
+
+## Inadequacy of Current Solutions
+To do
+
+## Technical Background Applicable
+To do
+
+## Team Approach
+To do
