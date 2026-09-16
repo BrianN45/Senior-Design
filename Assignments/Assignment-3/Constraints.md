@@ -1,0 +1,7 @@
+# Constraints Essay
+## Economic
+This project has costs related to hosting our application. There’s also costs for using an API key from Claude to run queries on social media posts. However, there are free services if you register yourself as a student on Azure (free credits). As more students use our application, we can see costs rising.
+## Social
+Our application serves University of Cincinnati students who want to find affordable places to socialize and drink near campus. It helps students save money on tight budgets while also directing customer foot traffic to local Clifton bars and restaurants. If the system only scrapes certain large venues, it could unintentionally hurt smaller family-owned spots that do not post deals frequently online. To keep the impact positive, the platform will include a simple submission form so any local business owner can share their deals.
+## Ethical
+Promoting bar promotions around a college campus creates a clear risk of encouraging binge drinking or underage alcohol consumption. Many University of Cincinnati undergraduates are under 21, so the app cannot simply act as an unfiltered alcohol feed. To address this, the design will prioritize food specials and require users to confirm they are 21 before viewing alcohol-specific promotions. Balancing this responsibility is a trade-off, because adding age verification steps creates extra friction for users but is necessary to promote safe and responsible campus social life.
