@@ -76,7 +76,3 @@ Postcondition: The student has seen deals that match their age answer, and no de
 - [x] AC-03.1: Given an owner fills in all 7 required items (business name, address, deal description, category, days and times, alcohol yes or no, contact email), when the owner submits the form, then the deal shows up in the student feed within 60 seconds. If any item is empty, 0 deals are saved and the empty item is named in text.
 
 - [x] AC-04.1 (Accessibility): Given the feed page and the deal detail page, when each page is scanned with the axe-core accessibility checker for WCAG 2.1 level AA, then the scan finds 0 critical and 0 serious problems on both pages.
-
-## Assumptions
-
-The numbers (1 mile, 3 seconds, 24 hours, 60 seconds) are our first guesses and will be checked with our advisor in Week 9. The age question is the student saying they are 21, not an ID check.
