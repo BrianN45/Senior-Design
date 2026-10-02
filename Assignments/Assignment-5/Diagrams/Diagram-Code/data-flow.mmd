@@ -1,0 +1,39 @@
+---
+title: BarCat Deals - Data Flow Diagram
+---
+flowchart LR
+  classDef process fill:#1f497d,color:#fff,shape:circle;
+  classDef entity fill:#f9f9f9,color:#333,stroke:#333;
+  classDef store fill:#f0ad4e,color:#fff,shape:rect,stroke-width:0px;
+
+  %% Visual Legend
+  subgraph Legend [Legend]
+    E_Leg[External Entity]:::entity
+    P_Leg((Process)):::process
+    S_Leg[[Data Store]]:::store
+  end
+
+  %% Centralized Data Store
+  DB[[C4 Deal Database]]:::store
+
+  %% Sub-Flow 1: Automated Ingestion Pipeline
+  subgraph Flow1 [1. Automated Ingestion Pipeline]
+    Ext1[C6 External Social Media APIs]:::entity -->|Raw Post Payload HTML/JSON/Image Formats| P1((1. Scrape & Standardize)):::process
+  end
+
+  %% Sub-Flow 2: Owner Submission Pipeline
+  subgraph Flow2 [2. Owner Submission Pipeline]
+    Owner[Venue Owner]:::entity -->|7 Form Fields HTTP Form Data| P2((2. Validate Submission)):::process
+    P2 -.->|Missing Field Error JSON| Owner
+  end
+
+  %% Sub-Flow 3: Student Retrieval Pipeline
+  subgraph Flow3 [3. Student Retrieval Pipeline]
+    Student[UC Student]:::entity -->|Age Flag & Coordinates HTTP Query Params| P3((3. Filter & Sort Deals)):::process
+    P3 -->|Filtered Active Deals JSON Array| Student
+  end
+
+  %% Connections to/from Database
+  P1 -->|Extracted Deal Object JSON| DB
+  P2 -->|Validated Deal Record JSON| DB
+  DB -->|Raw Active Deal Rows SQL Result Set| P3

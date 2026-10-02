@@ -1,0 +1,39 @@
+---
+title: BarCat Deals - Block Diagram
+---
+flowchart TD
+  classDef internal fill:#1f497d,color:#fff,stroke:#000,stroke-width:1px;
+  classDef external fill:#f9f9f9,color:#333,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+  classDef db fill:#1f497d,color:#fff,shape:cylinder;
+
+  subgraph IO [System Inputs & Outputs]
+    IO_Text["Basic Input: Business deal details from business owners and scraped social media posts.<br>Basic Output: Filtered deal listings served via JSON to students."]
+  end
+
+  subgraph Legend [Diagram Conventions]
+    L1[Internal Component]:::internal
+    L2[External System]:::external
+    L3[(Data Store)]:::db
+    L1 ---|Solid Arrow: Interface / Network Connection| L2
+  end
+
+  subgraph Clients
+    Client1[C1 Student Web App]:::internal
+    Client2[C2 Owner Web Portal]:::internal
+  end
+
+  subgraph Server Backend
+    Backend[C3 Backend API Service]:::internal
+    DB[(C4 Deal Database)]:::db
+    Ingest[C5 Deal Ingestion Service]:::internal
+  end
+
+  subgraph External
+    Ext1[C6 External Social Media APIs]:::external
+  end
+
+  Client1 -- I1 --> Backend
+  Client2 -- I2 --> Backend
+  Ingest -- I3 --> Backend
+  Backend -- I4 --> DB
+  Ext1 -- I5 --> Ingest
