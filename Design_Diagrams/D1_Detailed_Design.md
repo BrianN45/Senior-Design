@@ -1,3 +1,5 @@
+# D1 Detailed Design Document
+
 # Title, Goal Statement, Conventions
 **Title:** Barcat Deals
 **Goal Statement:** Our goal for Barcat Deals is to give students an easier way to find deals around campus at the University of Cincinnati. By leveraging AI, we can create an automated process to find deals from various social media accounts from businesses.
