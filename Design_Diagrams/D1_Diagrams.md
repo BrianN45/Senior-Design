@@ -349,7 +349,7 @@ PostgreSQL is the selected database because every BarCat Deals entity is related
  
 ## 6.2 Backend: Python with FastAPI
  
-Python with FastAPI is the selected backend for C3 and C5, so both can share validation code. **Team skill fit:** Kiki Vasilev became proficient in Python through his experience at Siemens, and Kaustubh Mathur also writes Python regularly (pandas, Tkinter automation). FastAPI is a thin layer over Python, so that skill carries over. **Licensing:** Python (PSF), FastAPI, Pydantic, and SQLAlchemy (MIT) have no fees or restrictions. **Community support:** All are widely used with strong documentation, and the Anthropic SDK supports Python. **Performance:** Peak load is a few requests a second, and the slow part is the AI call, which runs in the background. **Cost and hosting:** It runs in one small container on Azure. Node.js with Express was considered, but we chose one language across C3 and C5. Django was also considered, but we do not need its admin site.
+Python with FastAPI is the selected backend for C3 and C5, so both can share validation code. **Team skill fit:** Kiki Vasilev became proficient in Python through his experience at Siemens, and Kaustubh Mathur also writes Python (pandas, Tkinter automation). FastAPI is a thin layer over Python, so that skill carries over. **Licensing:** Python (PSF), FastAPI, Pydantic, and SQLAlchemy (MIT) have no fees or restrictions. **Community support:** All are widely used with strong documentation, and the Anthropic SDK supports Python. **Performance:** Peak load is a few requests a second, and the slow part is the AI call, which runs in the background. **Cost and hosting:** It runs in one small container on Azure. Node.js with Express was considered, but we chose one language across C3 and C5. Django was also considered, but we do not need its admin site.
  
 ## 6.3 Front End: Flask
  
@@ -357,7 +357,7 @@ Flask is the selected framework for the student app (C1) and owner portal (C2), 
  
 ## 6.4 Job Processing: Database Table as the Queue
  
-C5 uses a `status` column on `SOCIAL_MEDIA_POST` as its work queue instead of a separate message broker. Ved Sanap is the team member for this area **[CONFIRM: Ved's relevant experience to cite here]**. **Team skill fit:** The team already knows SQL, so this approach is easy to understand and debug. **Licensing:** Nothing extra to license. **Community support:** Picking rows with `FOR UPDATE SKIP LOCKED` is a well-known PostgreSQL pattern, and APScheduler (MIT) handles the polling schedule. **Performance:** 100 posts a day (10,000 at 100 times) is far below what this approach handles. **Cost and hosting:** No second service to pay for or host. Redis with Celery was considered, but a broker adds cost and moving parts we do not need.
+C5 uses a `status` column on `SOCIAL_MEDIA_POST` as its work queue instead of a separate message broker. Ved Sanap is the team member for this area. **Team skill fit:** The team already knows SQL, so this approach is easy to understand and debug. **Licensing:** Nothing extra to license. **Community support:** Picking rows with `FOR UPDATE SKIP LOCKED` is a well-known PostgreSQL pattern, and APScheduler (MIT) handles the polling schedule. **Performance:** 100 posts a day (10,000 at 100 times) is far below what this approach handles. **Cost and hosting:** No second service to pay for or host. Redis with Celery was considered, but a broker adds cost and moving parts we do not need.
  
 ## 6.5 Hosting: Microsoft Azure
  
