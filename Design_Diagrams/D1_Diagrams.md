@@ -1,7 +1,7 @@
 # BarCat Deals: Detailed Design (D1)
 
 **Team Members:** Kaustubh Mathur, Brian Nguyen, Ved Sanap, Meredith Bartel, Kiki Vasilev
-**Course:** Capstone [CONFIRM course name and number]
+**Course:** Senior Design
 **Advisor:** Dr. Hrishikesh Vinayak Bhide
 **Assignment:** Design D1 - Detailed Design
 **Date:** October 7, 2026
