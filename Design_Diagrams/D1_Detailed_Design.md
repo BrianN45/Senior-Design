@@ -13,7 +13,7 @@
 
 ## Project Title
 
-**BarCat Deals: AI-Assisted Deal Aggregation for Bars and Restaurants Near the University of Cincinnati**
+**BarCat Deals**
 
 ## Goal Statement
 
@@ -108,8 +108,6 @@ erDiagram
         datetime scraped_at
     }
 ```
-
-Compared with the earlier diagram, `days_and_times` is replaced by `days_of_week`, `start_time`, and `end_time`, so search can check whether a deal is active without parsing text. `title`, `valid_until`, and `status` are added to `BASE_DEAL`, and `status` and `external_id` are added to `SOCIAL_MEDIA_POST`.
 
 ## 2.2 Entity Descriptions
 
