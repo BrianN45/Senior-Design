@@ -9,7 +9,7 @@
 
 ## Block Diagram
 Note: It was difficult positioning text in mermaid diagrams so we just added a caption below each diagram for the goal statement (same applies to data flow diagram).
-![](/Assignments/Assignment-5/Diagrams/block-diagram.png)
+![](/Design_Diagrams/Diagrams/block-diagram.png)
 **Goal Statement:** Create an easier way for UC students to view deals at bars and restaurants.
 
 ### Component Responsibility Table
@@ -53,7 +53,7 @@ Example payload for **I3: Ingestion Service ↔ Backend API**
 ```
 
 ## Data-Flow Diagram
-![](/Assignments/Assignment-5/Diagrams/data-flow-diagram.png)
+![](/Design_Diagrams/Diagrams/data-flow-diagram.png)
 **Goal Statement:** Create an easier way for UC students to view deals at bars and restaurants.
 ## Architecture Pattern Selection
 
