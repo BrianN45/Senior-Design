@@ -1,0 +1,34 @@
+---
+title: BarCat Deals - Figure 1 - Student browsing and owner submission
+---
+flowchart TD
+    goal["Goal: Create an easier way for UC students to view deals at bars and restaurants."]
+
+    subgraph student_flow["Student browsing"]
+        student["C1 Student Web App<br/>Age answer and today filters"]
+        eligibility["C3 Eligibility on I1<br/>Server age, radius, and schedule<br/>Order by occurrence start"]
+        feed["C1 Accessible feed and detail<br/>Eligible cards and source links<br/>Freshness labels and error text"]
+
+        student -->|"I1 GET"| eligibility
+        eligibility -->|"200 / eligible results"| feed
+        eligibility -.->|"401 / 403 / 503: show error"| feed
+    end
+
+    subgraph owner_flow["Owner submission"]
+        owner["C2 Owner Web Portal<br/>Owner login and seven-item form"]
+        validation["C3 Validation on I2<br/>Owner mapping and request key<br/>Validate before write"]
+        transaction["C4 Transaction on I4<br/>Deal and request result commit<br/>Then confirm success in C2"]
+
+        owner -->|"I2 POST"| validation
+        validation -->|"Valid / commit"| transaction
+        validation -.->|"401 / 422 / 503"| owner
+    end
+
+    subgraph legend["Diagram conventions"]
+        conventions["Boxes represent steps or components.<br/>Solid arrows represent normal requests and results.<br/>Dashed arrows represent errors.<br/>I1, I2, and I4 preserve the D0 interface names."]
+    end
+
+    classDef component fill:#eaf0f5,stroke:#172b40,color:#172b40;
+    classDef note fill:#ffffff,stroke:#d9d9d9,color:#172b40;
+    class student,eligibility,feed,owner,validation,transaction component;
+    class goal,conventions note;
