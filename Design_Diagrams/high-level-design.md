@@ -8,8 +8,49 @@
 - Kiki Vasilev
 
 ## Block Diagram
-Note: It was difficult positioning text in mermaid diagrams so we just added a caption below each diagram for the goal statement (same applies to data flow diagram).
-![](/Design_Diagrams/Diagrams/block-diagram.png)
+
+```mermaid
+---
+title: BarCat Deals - Block Diagram
+---
+flowchart TD
+  classDef internal fill:#1f497d,color:#fff,stroke:#000,stroke-width:1px;
+  classDef external fill:#f9f9f9,color:#333,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+  classDef db fill:#1f497d,color:#fff,shape:cylinder;
+
+  subgraph IO [System Inputs & Outputs]
+    IO_Text["Basic Input: Business deal details from business owners and scraped social media posts.<br>Basic Output: Filtered deal listings served via JSON to students."]
+  end
+
+  subgraph Legend [Diagram Conventions]
+    L1[Internal Component]:::internal
+    L2[External System]:::external
+    L3[(Data Store)]:::db
+    L1 ---|Solid Arrow: Interface / Network Connection| L2
+  end
+
+  subgraph Clients
+    Client1[C1 Student Web App]:::internal
+    Client2[C2 Owner Web Portal]:::internal
+  end
+
+  subgraph Server Backend
+    Backend[C3 Backend API Service]:::internal
+    DB[(C4 Deal Database)]:::db
+    Ingest[C5 Deal Ingestion Service]:::internal
+  end
+
+  subgraph External
+    Ext1[C6 External Social Media APIs]:::external
+  end
+
+  Client1 -- I1 --> Backend
+  Client2 -- I2 --> Backend
+  Ingest -- I3 --> Backend
+  Backend -- I4 --> DB
+  Ext1 -- I5 --> Ingest
+```
+
 **Goal Statement:** Create an easier way for UC students to view deals at bars and restaurants.
 
 ### Component Responsibility Table
@@ -53,7 +94,49 @@ Example payload for **I3: Ingestion Service ↔ Backend API**
 ```
 
 ## Data-Flow Diagram
-![](/Design_Diagrams/Diagrams/data-flow-diagram.png)
+
+```mermaid
+---
+title: BarCat Deals - Data Flow Diagram
+---
+flowchart LR
+  classDef process fill:#1f497d,color:#fff,shape:circle;
+  classDef entity fill:#f9f9f9,color:#333,stroke:#333;
+  classDef store fill:#f0ad4e,color:#fff,shape:rect,stroke-width:0px;
+
+  %% Visual Legend
+  subgraph Legend [Legend]
+    E_Leg[External Entity]:::entity
+    P_Leg((Process)):::process
+    S_Leg[[Data Store]]:::store
+  end
+
+  %% Centralized Data Store
+  DB[[C4 Deal Database]]:::store
+
+  %% Sub-Flow 1: Automated Ingestion Pipeline
+  subgraph Flow1 [1. Automated Ingestion Pipeline]
+    Ext1[C6 External Social Media APIs]:::entity -->|Raw Post Payload HTML/JSON/Image Formats| P1((1. Scrape & Standardize)):::process
+  end
+
+  %% Sub-Flow 2: Owner Submission Pipeline
+  subgraph Flow2 [2. Owner Submission Pipeline]
+    Owner[Venue Owner]:::entity -->|7 Form Fields HTTP Form Data| P2((2. Validate Submission)):::process
+    P2 -.->|Missing Field Error JSON| Owner
+  end
+
+  %% Sub-Flow 3: Student Retrieval Pipeline
+  subgraph Flow3 [3. Student Retrieval Pipeline]
+    Student[UC Student]:::entity -->|Age Flag & Coordinates HTTP Query Params| P3((3. Filter & Sort Deals)):::process
+    P3 -->|Filtered Active Deals JSON Array| Student
+  end
+
+  %% Connections to/from Database
+  P1 -->|Extracted Deal Object JSON| DB
+  P2 -->|Validated Deal Record JSON| DB
+  DB -->|Raw Active Deal Rows SQL Result Set| P3
+```
+
 **Goal Statement:** Create an easier way for UC students to view deals at bars and restaurants.
 ## Architecture Pattern Selection
 
