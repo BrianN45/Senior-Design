@@ -24,7 +24,12 @@ Deployment uses separate Flask, API, and worker containers on Azure with managed
 
 Existing diagrams are linked rather than duplicated:
 
-- [Diagrams for D0, D1, and D2](Design_Diagrams/) - consolidated source
+- [D0 block diagram](Design_Diagrams/D0_Detailed_Design.md#block-diagram)
+- [D0 data-flow diagram](Design_Diagrams/D0_Detailed_Design.md#data-flow-diagram)
+- [D1 entity-relationship diagram](Design_Diagrams/D1_Detailed_Design.md#21-entity-relationship-diagram)
+- [D2 student browsing and owner submission diagram](Design_Diagrams/D2_Detailed_Design.md#22-c1-student-web-app)
+- [D2 relational additions diagram](Design_Diagrams/D2_Detailed_Design.md#24-c4-data-additions-and-invariants)
+- [D2 ingestion states and failure paths diagram](Design_Diagrams/D2_Detailed_Design.md#27-c5-ingestion-and-c6-adapters)
 
 ## 3. Interfaces and Data Formats
 
