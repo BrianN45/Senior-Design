@@ -11,7 +11,7 @@
 | ----------- | ---------- | ------------------------------------------------------------------------- | ---------------------- |
 | 0.1         | 2026-10-28 | Consolidated stories and D0-D2 into requirements.                         | AI-assisted team draft |
 | 0.1, rev. 1 | 2026-10-28 | Shortened prose/tables; preserved IDs, priorities, thresholds, and scope. | AI-assisted revision   |
-| 0.2 | 2026-10-28 | Added assumptions and the OQ-01-08 register with owners and proposed review dates; preserved requirement IDs, priorities, and thresholds. | AI-assisted revision |
+| 0.2 | 2026-10-28 | Added assumptions and the OQ-01-07 register with owners and proposed review dates; preserved requirement IDs, priorities, and thresholds. | AI-assisted revision |
 
 ## 2. Purpose and Scope
 
