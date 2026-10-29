@@ -22,7 +22,7 @@ BarCat Deals uses a client-server architecture with background ingestion. **C1 S
 
 For browsing, C3 constructs scheduled occurrences in Eastern time and returns eligible deals with source and freshness information. The default feed includes today's offers, including those starting later today. For owner submissions, C3 checks the approved owner-to-venue mapping and commits the deal and submission result before returning success.
 
-**C5 Deal Ingestion Service** collects permitted posts through **C6 External Social Media APIs**, asks an AI model for structured deals, and submits validated results through C3. Posts, processing leases, and results remain durable so failed work can recover. External requests and AI calls run outside database transactions and the browsing request path.
+**C5 Deal Ingestion Service** web scrapes approved venue social-media pages from **C6 External Social Media Sources**, asks an AI model for structured deals, and submits validated results through C3. Posts, processing leases, and results remain durable so failed work can recover. External requests and AI calls run outside database transactions and the browsing request path. OQ-01 defines source approval, request limits, and funding controls for web scraping. The linked D0-D2 diagrams retain the historical C6 label "External Social Media APIs".
 
 Deployment uses separate Flask, API, and worker containers on Azure with managed PostgreSQL. The exact Azure service and budget remain unconfirmed. Shared modules **G1 authentication**, **G2 inline notices**, **G3 configuration**, and **G4 logging/health** run within these components. Supabase Auth supplies verified owner identity; students can browse through guest sessions. C5 receives no database credentials.
 
@@ -46,7 +46,7 @@ Existing diagrams are linked rather than duplicated:
 | I2: C2 to C3 | Owner input, session, request key; committed deal ID | HTTPS JSON; 422 validation, 403 authority, 409 conflict, 503 dependency failure. |
 | I3: C5 to C3 | Posts, claims, completions, budget requests; durable result JSON | Restricted HTTPS with service key; 401 bad credential, 409 stale lease, 503 retryable failure. |
 | I4: C3 to C4 | Parameterized SQL/transactions; rows and commit results | PostgreSQL connection through SQLAlchemy; rollback on failure, retry one deadlock, otherwise return 503. |
-| I5: C5 to C6 | Account/cursor/limit; normalized post page | Official HTTPS API; honor throttling, disable revoked access, quarantine invalid payloads. |
+| I5: C5 to C6 | Approved venue page URL/account and pagination limit; HTML, post text, images, and timestamps normalized by C5 into post records | HTTPS web scraping; honor request limits, stop on denied access, retry transient failures, and quarantine invalid content. |
 | C5 to AI | Post text/images/date; 0-10 structured candidate deals | Anthropic HTTPS API; 30-second timeout, schema validation, bounded retries. |
 | G1 to identity provider | Access token; verified subject and expiry | Supported Supabase verification interface; 401 invalid identity, 503 unavailable verification. |
 
@@ -105,7 +105,7 @@ The following paths add `/internal` after `/api/v1`. Every operation requires th
 | `/posts/{id}/failure` | Token, typed error, retryable flag | Status/next attempt; server enforces attempt limit. |
 | `/budget/reservations` | Attempt/post IDs, lease token | Allowed flag/reservation ID; denial pauses AI without consuming an attempt. |
 
-Poll approved accounts every 15 minutes or the longer provider interval. Leases last two minutes, extended by 30-second heartbeats. Permit three processing attempts, one AI call each; retry delays are 30/120 seconds plus up to 10% jitter. C3 transport calls time out after five seconds with at most three attempts and 1/2-second delays. Transport retries do not invoke AI again. Failed posts retain raw input; expired leases reject late results. Provider 429 honors Retry-After, otherwise waits 15 minutes.
+Poll approved accounts every 15 minutes or the longer provider interval. Leases last two minutes, extended by 30-second heartbeats. Permit three processing attempts, one AI call each; retry delays are 30/120 seconds plus up to 10% jitter. C3 transport calls time out after five seconds with at most three attempts and 1/2-second delays. Transport retries do not invoke AI again. Failed posts retain raw input; expired leases reject late results. Source HTTP 429 honors Retry-After, otherwise waits 15 minutes.
 
 ### 3.5 Core Behavior and Shared Modules
 
@@ -115,7 +115,7 @@ Poll approved accounts every 15 minutes or the longer provider interval. Leases 
 
 **G1/G2:** Use hashed 256-bit session tokens, secure HttpOnly SameSite=Lax cookies, CSRF checks, 24-hour guest expiry, and authenticated expiry <=30 minutes/provider expiry. Recheck owner mapping per request. Render escaped semantic HTML, keyboard controls, field errors, and accessible notices. Revalidate visible feeds every 60 seconds; hide alcohol after failed eligibility refresh. OQ-07 must resolve refresh/network delay against the 60-second publication target.
 
-**G3/G4:** Validate required settings before readiness; keep unapproved adapters/AI disabled. Emit redacted structured events with a 1,000-event maximum local buffer and 14-day retention target. Drop oldest buffered events on collector failure and report the count after recovery. Target daily backups, seven-day retention, and one successful restore exercise. Monitor latency, failures, cost, and backlog older than 24 hours. These operational defaults remain unverified.
+**G3/G4:** Validate required settings before readiness; keep unapproved web scrapers/AI disabled. Emit redacted structured events with a 1,000-event maximum local buffer and 14-day retention target. Drop oldest buffered events on collector failure and report the count after recovery. Target daily backups, seven-day retention, and one successful restore exercise. Monitor latency, failures, cost, and backlog older than 24 hours. These operational defaults remain unverified.
 
 ## 4. Technology Stack
 
@@ -126,7 +126,7 @@ Poll approved accounts every 15 minutes or the longer provider interval. Leases 
 | Data | PostgreSQL, SQLAlchemy, Alembic | Transactions, uniqueness, migrations: REQ-06/07, CON-05. |
 | Identity | Supabase Auth; application sessions | Verified owners and guest eligibility: NFR-03, CON-03. |
 | Worker | APScheduler, database queue, httpx | Bounded recoverable work: NFR-05, CON-01. |
-| AI / source | Anthropic SDK; approved Meta/X adapters | Conditional ingestion: REQ-07, CON-04. |
+| AI / source | Anthropic SDK; web scrapers for approved Meta/X venue pages | Conditional scraping and extraction: REQ-07, CON-04. |
 | Time | zoneinfo, python-dateutil | Explicit local schedule handling: REQ-01/09. |
 | Hosting/tests | Azure containers/managed PostgreSQL; pytest, axe-core, browser tools | Recovery and verification: NFR-01/04/06/07. |
 
@@ -139,12 +139,12 @@ Exact versions, licenses, provider terms, model, and Azure SKU require confirmat
 | CON-01 | Require funded cap, model/quality approval, and atomic reservations. Pause AI at the cap; retain manual publication. |
 | CON-02 | Owner publication works without any social account; social posting is not an onboarding requirement. |
 | CON-03 | Prominent food access, server-enforced age confirmation, and no birth-date/ID-image collection. |
-| CON-04 | Enable only permitted accounts/APIs; disable revoked access; no scraping bypass. |
+| CON-04 | Web scrape only approved venue pages; follow source access rules and request limits, stop on denied access, and do not bypass access controls. |
 | CON-05 | Only C3 accesses C4 directly; clients and workers use its API. |
 
-Open decisions remain provider access, coordinates, price completeness, funding/AI evaluation, and benchmark/refresh conditions (OQ-01-04/07). The Week 3 essay, Week 8 plan, repository paths, and missing D2 technical references still need reconciliation (OQ-06/08).
+Open decisions cover web-scraping source approval and request limits (OQ-01), campus coordinates (OQ-02), price completeness (OQ-03), funding/AI evaluation (OQ-04), and benchmark/refresh conditions (OQ-07). Reconcile the Week 3 constraints and Week 8 plan under OQ-06.
 
-Owners, proposed review dates, status, and resolution evidence for OQ-01-08 are maintained in [Requirements Document Section 9](Requirements_Document.md#9-assumptions-and-open-questions). OQ-05 records the existing deferred-feature decision.
+Owners, proposed review dates, status, and resolution evidence for OQ-01-07 are maintained in [Requirements Document Section 9](Requirements_Document.md#9-assumptions-and-open-questions). OQ-05 records the existing deferred-feature decision.
 
 D2 supersedes earlier client-supplied age, active-only default, and dropped-payload recovery. Bookmarks, moderation dashboards, and outbound notifications remain outside this release. These are inherited decisions, not new scope changes.
 
@@ -175,7 +175,7 @@ Designed means specified, not implemented or tested. Planned identifies unconfir
 | CON-01 | Funded AI enablement | D2 G3; BUDGET_RESERVATION | Designed | TC-019 |
 | CON-02 | Owner-only venues | D2 C2/SUBMITTED_DEAL | Designed | TC-020 |
 | CON-03 | Food and minimal age data | D2 C1 food filter; G1/B2 gate | Designed | TC-021 |
-| CON-04 | Permitted sources | D2 C6 adapters/account enablement | Designed | TC-022 |
+| CON-04 | Approved web-scraping sources | C6 source boundary; C5 scraper enablement; OQ-01 | Designed | TC-022 |
 | CON-05 | C3-only database access | D2 I3/I4 credential separation | Designed | TC-023 |
 
 All IDs map to a design. Open decisions still block acceptance; tests must include D2 EC-01-15 failure and boundary cases.
