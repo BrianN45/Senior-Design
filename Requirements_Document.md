@@ -18,7 +18,11 @@ BarCat Deals helps UC students compare food and bar offers near campus in one fe
 
 The release includes student feed/detail pages, an owner form, a central API/database, and conditional background ingestion. Today mode includes later-today offers, not only offers active now. Missing facts and stale data remain explicit.
 
-Sources for this document: Everything that was done in D0, D1, and D2 documents.
+Sources for this document:
+
+- [D0 High-Level Design](Design_Diagrams/D0_Detailed_Design.md)
+- [D1 Detailed Design](Design_Diagrams/D1_Detailed_Design.md)
+- [D2 Detailed Design](Design_Diagrams/D2_Detailed_Design.md)
 
 ## 3. Stakeholders and User Goals
 
