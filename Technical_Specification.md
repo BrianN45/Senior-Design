@@ -3,13 +3,17 @@
 **Course:** CS 5001 - Senior Design I, University of Cincinnati  
 **Team:** Brian Nguyen, Kaustubh Mathur, Ved Sanap, Meredith Bartel, Kiki Vasilev  
 **Advisor:** Dr. Hrishikesh Vinayak Bhide  
-**Version:** 0.2 | **Date:** October 28, 2026 | **Status:** Draft for review  
+**Version:** 0.3 | **Date:** October 28, 2026 | **Status:** Draft for review
+
+**Requirements baseline:** [Requirements Document](Requirements_Document.md), **version 0.2**, dated **October 28, 2026**. Section 6 traces every REQ, NFR, and CON ID to this version. Its [glossary](Requirements_Document.md#4-glossary) and [assumptions/open-question register](Requirements_Document.md#9-assumptions-and-open-questions) also apply to this specification.
+
 ## 1. Version and Change Log
 
 | Version | Date | Change | Author |
 | --- | --- | --- | --- |
 | 0.1 | 2026-10-28 | Consolidated D0-D2 design and requirement mappings. | AI-assisted team draft |
 | 0.2 | 2026-10-28 | Shortened explanations and tables; preserved interfaces, constraints, and complete traceability. | AI-assisted revision |
+| 0.3 | 2026-10-28 | Referenced Requirements Document version 0.2 and its shared assumptions/open-question register. | AI-assisted revision |
 
 
 ## 2. Architecture Summary
@@ -139,6 +143,8 @@ Exact versions, licenses, provider terms, model, and Azure SKU require confirmat
 | CON-05 | Only C3 accesses C4 directly; clients and workers use its API. |
 
 Open decisions remain provider access, coordinates, price completeness, funding/AI evaluation, and benchmark/refresh conditions (OQ-01-04/07). The Week 3 essay, Week 8 plan, repository paths, and missing D2 technical references still need reconciliation (OQ-06/08).
+
+Owners, proposed review dates, status, and resolution evidence for OQ-01-08 are maintained in [Requirements Document Section 9](Requirements_Document.md#9-assumptions-and-open-questions). OQ-05 records the existing deferred-feature decision.
 
 D2 supersedes earlier client-supplied age, active-only default, and dropped-payload recovery. Bookmarks, moderation dashboards, and outbound notifications remain outside this release. These are inherited decisions, not new scope changes.
 

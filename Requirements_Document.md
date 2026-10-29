@@ -3,7 +3,7 @@
 **Course:** CS 5001 - Senior Design I, University of Cincinnati  
 **Team:** Brian Nguyen, Kaustubh Mathur, Ved Sanap, Meredith Bartel, Kiki Vasilev  
 **Advisor:** Dr. Hrishikesh Vinayak Bhide  
-**Version:** 0.1, editorial revision 1 | **Date:** October 28, 2026 | **Status:** Draft for review
+**Version:** 0.2 | **Date:** October 28, 2026 | **Status:** Draft for review
 
 ## 1. Version and Change Log
 
@@ -11,6 +11,7 @@
 | ----------- | ---------- | ------------------------------------------------------------------------- | ---------------------- |
 | 0.1         | 2026-10-28 | Consolidated stories and D0-D2 into requirements.                         | AI-assisted team draft |
 | 0.1, rev. 1 | 2026-10-28 | Shortened prose/tables; preserved IDs, priorities, thresholds, and scope. | AI-assisted revision   |
+| 0.2 | 2026-10-28 | Added assumptions and the OQ-01-08 register with owners and proposed review dates; preserved requirement IDs, priorities, and thresholds. | AI-assisted revision |
 
 ## 2. Purpose and Scope
 
@@ -113,3 +114,31 @@ CON-01-03 reflect D2's economic/social/ethical constraints; CON-04-05 are inheri
 | CON-03 | Keep food prominent and age gating server-side; collect no birth dates/ID images. | D2 CON-ETHICAL/G1. TC-021: UI, authorization, and stored-field inspection. |
 | CON-04 | Use only approved, permitted provider APIs/accounts; keep others off without scraping bypasses. | D2 DR-08. TC-022: access evidence and disabled adapters. |
 | CON-05 | Only C3 directly accesses C4; clients/C5 use its interfaces and migrations follow C3's controlled path. Shared modules stay within existing components. | D2 I3/I4. TC-023: credentials, network policy, calls. |
+
+## 9. Assumptions and Open Questions
+
+These entries consolidate the existing D2 design and unresolved acceptance conditions. Assumptions are planning premises, not verified facts. Owners below coordinate confirmation; new follow-up allocations and the October 30 review dates are proposed for team confirmation, not agreed deadlines or claims of completion. Review may leave an item open with a recorded next action.
+
+### 9.1 Assumptions
+
+| ID | Assumption and validation dependency | Owner | Date recorded |
+| --- | --- | --- | --- |
+| ASM-01 | The approved UC main-campus reference point and venue coordinates support a fixed one-mile straight-line boundary; student GPS is unnecessary. Coordinates remain subject to OQ-02. | Meredith Bartel; Brian Nguyen confirms the campus point | 2026-10-28 |
+| ASM-02 | The team can onboard approved owners and maintain their venue mappings. Owner submissions remain usable without a social-media account. Validate with REQ-05 and CON-02 fixtures. | Kaustubh Mathur | 2026-10-28 |
+| ASM-03 | Guest age confirmation is self-attestation without registration, birth dates, or ID images. It does not establish verified age. Validate REQ-02 and CON-03 through UI/API checks. | Ved Sanap | 2026-10-28 |
+| ASM-04 | Permitted social access, funded service limits, and acceptable extraction quality can be demonstrated before automation is enabled. Until OQ-01/04 close, adapters and AI publication remain disabled as applicable; manual publication remains available. | Kiki Vasilev | 2026-10-28 |
+| ASM-05 | About 50 venues and 300 published deals represent the initial performance fixture. Sampling, concurrency, network conditions, and the optional 100-times workload remain proposed under OQ-07. | Ved Sanap | 2026-10-28 |
+
+### 9.2 Open Questions and Deferred Decisions
+
+OQ-01-05 retain their D2 meanings. OQ-06-07 define the follow-ups already cited in this document and the technical specification.
+
+| ID | Question and resolution evidence | Coordinating owner | Proposed review date | Status / current rule |
+| --- | --- | --- | --- | --- |
+| OQ-01 | Which Meta/X adapters may read approved venue accounts, and at what cost? Record access terms and one permitted account fetch for each adapter before enabling it. | Kiki Vasilev | 2026-10-30 | Open; unapproved adapters stay disabled. |
+| OQ-02 | What campus reference point and venue coordinates are approved? Seed and verify venue coordinates and record Brian's confirmation of the campus point before geographic acceptance testing. | Meredith Bartel, with Brian Nguyen | 2026-10-30 | Open; the fixed one-mile rule remains unchanged. |
+| OQ-03 | Can a published deal omit a price while satisfying AC-01.1? Agree the price policy with stakeholders and reconcile REQ-03 with that criterion. | Kaustubh Mathur | 2026-10-30 | Open; disclose missing prices and never invent them. Complete price coverage is not claimed. |
+| OQ-04 | What funded hosting/identity/AI limits, approved model, and extraction-quality pass criteria permit automation? Record service/operating capabilities, budget caps, labeled-post evaluation results, and approval to enable publication. | Ved Sanap, with Kiki Vasilev for AI/access evidence | 2026-10-30 | Open; AI publication stays off until the gates pass. |
+| OQ-05 | Should bookmarks or a moderation dashboard enter a later release? Reconsider only against an accepted story, acceptance criteria, and a logged scope decision. | Team; Brian Nguyen coordinates | 2026-10-30 | Deferred under D2; neither feature is in the current MVP. |
+| OQ-06 | Do CON-01-05 and the Week 8 task ownership/schedule match the inherited constraints and required work? Reconcile [Constraints](Constraints.md), the [Task List](Planning/Tasklist.md), and the [Planning PDF](Planning/Planning.pdf); log any discrepancy and agreed resolution. | Ved Sanap, with component owners | 2026-10-30 | Open; no new budget or scope approval is implied. |
+| OQ-07 | What performance sample, concurrency, network profile, and stretch-test policy are accepted? Confirm NFR-01/08 conditions and an end-to-end refresh budget that can meet NFR-02's 60-second limit including processing, transfer, and rendering. Log any acceptance change. | Ved Sanap, with Brian Nguyen for browser timing | 2026-10-30 | Open; proposed sampling is not an approved relaxation of AC-01.1. |
