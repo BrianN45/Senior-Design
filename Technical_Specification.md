@@ -3,7 +3,7 @@
 **Course:** CS 5001 - Senior Design I, University of Cincinnati  
 **Team:** Brian Nguyen, Kaustubh Mathur, Ved Sanap, Meredith Bartel, Kiki Vasilev  
 **Advisor:** Dr. Hrishikesh Vinayak Bhide  
-**Version:** 0.3 | **Date:** October 28, 2026 | **Status:** Draft for review
+**Version:** 0.4 | **Date:** November 4, 2026 | **Status:** Draft for review
 
 **Requirements baseline:** [Requirements Document](Requirements_Document.md), **version 0.2**, dated **October 28, 2026**. Section 6 traces every REQ, NFR, and CON ID to this version. Its [glossary](Requirements_Document.md#4-glossary) and [assumptions/open-question register](Requirements_Document.md#9-assumptions-and-open-questions) also apply to this specification.
 
@@ -14,6 +14,7 @@
 | 0.1 | 2026-10-28 | Consolidated D0-D2 design and requirement mappings. | AI-assisted team draft |
 | 0.2 | 2026-10-28 | Shortened explanations and tables; preserved interfaces, constraints, and complete traceability. | AI-assisted revision |
 | 0.3 | 2026-10-28 | Referenced Requirements Document version 0.2 and its shared assumptions/open-question register. | AI-assisted revision |
+| 0.4 | 2026-11-04 | Linked the Week 10 Test Plan and expanded existing TC groups into A-C cases for major requirements; retained all group-to-requirement mappings and acceptance targets. | AI-assisted draft; team review pending |
 
 
 ## 2. Architecture Summary
@@ -150,25 +151,25 @@ D2 supersedes earlier client-supplied age, active-only default, and dropped-payl
 
 ## 6. Traceability Matrix
 
-Designed means specified, not implemented or tested. Planned identifies unconfirmed targets. Test IDs reserve Week 10 cases; no test results are claimed. Every baseline REQ/NFR/CON appears once with a named design element.
+Designed means specified, not implemented or tested. Planned identifies unconfirmed targets. The [Test and Validation Plan](Test_Plan.md) defines the Week 10 cases; no test results are claimed. A-C denotes three distinct cases within the existing TC group (for example, TC-001A, TC-001B, TC-001C). Every baseline REQ/NFR/CON appears once with a named design element. REQ-09 and NFR-08 procedures are deferred this cycle.
 
 | Req ID | Description | Design Component (D0/D1/D2) | Status | Test Case |
 | --- | --- | --- | --- | --- |
-| REQ-01 | Day/radius/start-order feed | D2 B2 occurrence/radius query; C1 | Designed | TC-001 |
-| REQ-02 | Guest age gate | D2 G1/WEB_SESSION; B2 age predicate | Designed | TC-002 |
-| REQ-03 | Facts and provenance | D2 DealView/C1; DEAL_SOURCE | Designed | TC-003 |
-| REQ-04 | Truthful stale labels | D2 B2 freshness metadata; G2 | Designed | TC-004 |
-| REQ-05 | Owner publication | D2 C2/I2 validation; C4 transaction | Designed | TC-005 |
-| REQ-06 | Safe submission retries | D2 REQUEST_RESULT; venue lock | Designed | TC-006 |
-| REQ-07 | Conditional ingestion | D1 A; D2 A2/I3/I5; evidence | Designed | TC-007 |
+| REQ-01 | Day/radius/start-order feed | D2 B2 occurrence/radius query; C1 | Designed | TC-001A-C |
+| REQ-02 | Guest age gate | D2 G1/WEB_SESSION; B2 age predicate | Designed | TC-002A-C |
+| REQ-03 | Facts and provenance | D2 DealView/C1; DEAL_SOURCE | Designed | TC-003A-C |
+| REQ-04 | Truthful stale labels | D2 B2 freshness metadata; G2 | Designed | TC-004A-C |
+| REQ-05 | Owner publication | D2 C2/I2 validation; C4 transaction | Designed | TC-005A-C |
+| REQ-06 | Safe submission retries | D2 REQUEST_RESULT; venue lock | Designed | TC-006A-C |
+| REQ-07 | Conditional ingestion | D1 A; D2 A2/I3/I5; evidence | Designed | TC-007A-C |
 | REQ-08 | Filters and paging | D2 C1/I1 filters; signed cursor | Designed | TC-008 |
 | REQ-09 | Active-now view | D2 B2 interval/order logic | Designed | TC-009 |
 | REQ-10 | Health reporting | D2 G3 settings; G4 health routes | Designed | TC-010 |
-| NFR-01 | Feed under 3 seconds | D2 B2 indexes; C1 render; G4 timing | Designed | TC-011 |
-| NFR-02 | Visibility within 60 seconds | D2 C2 commit/C1 refresh; OQ-07 | Designed | TC-012 |
-| NFR-03 | Security controls | D2 G1/CSRF; HTTPS; DTO/log redaction | Designed | TC-013 |
-| NFR-04 | Accessible pages | D2 C1 templates/keyboard; G2 notices | Designed | TC-014 |
-| NFR-05 | Recoverable processing | D2 Figure 3 leases/attempts/replay | Designed | TC-015 |
+| NFR-01 | Feed under 3 seconds | D2 B2 indexes; C1 render; G4 timing | Designed | TC-011A-C |
+| NFR-02 | Visibility within 60 seconds | D2 C2 commit/C1 refresh; OQ-07 | Designed | TC-012A-C |
+| NFR-03 | Security controls | D2 G1/CSRF; HTTPS; DTO/log redaction | Designed | TC-013A-C |
+| NFR-04 | Accessible pages | D2 C1 templates/keyboard; G2 notices | Designed | TC-014A-C |
+| NFR-05 | Recoverable processing | D2 Figure 3 leases/attempts/replay | Designed | TC-015A-C |
 | NFR-06 | Backups and restore | D2 C4 managed backup/restore policy | Planned | TC-016 |
 | NFR-07 | Bounded logs | D2 G4 buffer/retention | Designed | TC-017 |
 | NFR-08 | 100-times-volume stretch | D1 scale model; D2 B2 load-test plan | Planned | TC-018 |
