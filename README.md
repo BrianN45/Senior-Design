@@ -22,3 +22,9 @@ A tool that helps University of Cincinnati students find the best bar deals happ
 
 - [Test Plan source](Test_Plan.md) and [PDF](Test_Plan.pdf)
 - [Supporting sources](Test_Plan.md#appendix-a-supporting-sources)
+
+## 5. Ethics and Responsible Use
+
+- [Ethics Statement](Ethics_Statement.md) ([PDF](Ethics_Statement.pdf))
+- [Third-party attribution and terms](NOTICE.md)
+- [Repository security audit](Security_Audit.md)
