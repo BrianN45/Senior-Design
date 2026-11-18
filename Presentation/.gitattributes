@@ -1,4 +1,0 @@
-# Preserve exported documents and evidence without line-ending conversion.
-*.pdf binary
-*.pptx binary
-*.png binary
