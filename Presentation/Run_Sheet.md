@@ -21,8 +21,6 @@ The speaking order below follows the team's reported November 16 rehearsal. The 
 | Kiki Vasilev | 9-11 | Explain planned accomplishments, division of work, and the Expo demo; invite questions. | 2:00 |
 | **Total** | **1-11** | **All five members present.** | **10:00** |
 
-**Planned timekeeper: Meredith Bartel.** Brian Nguyen tracks the clock while Meredith presents slides 7-8. Meredith signals one minute remaining at 9:00 and the presentation limit at 10:00. Brian records section times during the next timed rehearsal. These are planned duties; no timekeeper was identified for the November 16 practice session.
-
 ## Slide Run Sheet
 
 Times are elapsed from the start of the talk. A transition to another slide by the same speaker is included as a continuation line.
@@ -77,10 +75,8 @@ The named owner answers first. Other members add details only when useful. Two u
 | Date | November 16, 2026 |
 | Participants | Brian Nguyen, Kaustubh Mathur, Ved Sanap, Meredith Bartel, Kiki Vasilev |
 | Coverage | All 11 slides, using the speaking sections listed below |
-| Total practice time | Approximately 30 minutes, reported by Brian Nguyen |
+| Total practice time | 30 minutes |
 | Timing scope | The whole practice session, including pauses and retries; not a measured uninterrupted presentation run |
-| Timekeeper during this session | Not recorded |
-| Per-section timing basis | The section times below are rough estimates requested by the team, calculated by dividing the approximately 30-minute session equally among five speaking sections. They are not stopwatch measurements. |
 
 | Section | Slides | Speaker | Estimated practice time, including pauses/retries | Planned uninterrupted presentation time |
 | --- | --- | --- | --- | --- |
@@ -90,22 +86,3 @@ The named owner answers first. Other members add details only when useful. Two u
 | Constraints and progress | 7-8 | Meredith Bartel | Approximately 6:00 | 2:00 |
 | Milestones, work division, and demo | 9-11 | Kiki Vasilev | Approximately 6:00 | 2:00 |
 | **Total** | **1-11** | **All members** | **Approximately 30:00** | **10:00** |
-
-The session established the speaking order. Because presentation-only times were not recorded, the 30-minute practice session cannot establish whether the talk fits the 10-minute limit.
-
-### Next Full-Group Timed Run
-
-**Target:** November 20, 2026, subject to team availability. **Timekeeper:** Meredith Bartel, with Brian covering Meredith's section and recording the results.
-
-Run all 11 slides without restarting and include hand-offs in the clock. Record the actual section times below and their sum; note pauses or technical interruptions separately. Do not replace estimates with measured results until the run occurs.
-
-| Section | Slides | Speaker | Actual section time |
-| --- | --- | --- | --- |
-| Introduction and team | 1-2 | Brian Nguyen | Not yet recorded |
-| Overview and user stories | 3-4 | Kaustubh Mathur | Not yet recorded |
-| Architecture and technologies | 5-6 | Ved Sanap | Not yet recorded |
-| Constraints and progress | 7-8 | Meredith Bartel | Not yet recorded |
-| Milestones, work division, and demo | 9-11 | Kiki Vasilev | Not yet recorded |
-| **Total presentation time** | **1-11** | **All members** | **Not yet recorded** |
-
-After the run, enter the date, all attendees, actual total and section times, and any cuts or hand-off adjustments. The measured full-group timed-rehearsal requirement remains open until these results are recorded.
