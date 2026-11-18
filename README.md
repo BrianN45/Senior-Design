@@ -28,3 +28,10 @@ A tool that helps University of Cincinnati students find the best bar deals happ
 - [Ethics Statement](Ethics_Statement.md) ([PDF](Ethics_Statement.pdf))
 - [Third-party attribution and terms](NOTICE.md)
 - [Repository security audit](Security_Audit.md)
+
+## 6. Presentation and Advisor Feedback
+
+- [Presentation draft PDF](Presentation/Presentation_Draft.pdf) and [editable PowerPoint](Presentation/Presentation_Draft.pptx)
+- [Advisor feedback record](Presentation/Advisor_Feedback.md) ([PDF](Presentation/Advisor_Feedback.pdf)), including the proposed speaker outline and recording plan
+- [Original reviewed deck](Presentation/Evidence/Reviewed_Presentation.pptx) and [advisor email evidence](Presentation/Evidence/Advisor_Email_2026-11-16.png)
+- [Full D1 reference](Presentation/Design_Backups/D1_Detailed_Design.pdf) and [full D2 reference](Presentation/Design_Backups/D2_Detailed_Design.pdf)
