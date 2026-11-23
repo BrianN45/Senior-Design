@@ -170,15 +170,28 @@ The public record links each member's design notebook and contribution summary. 
 
 ### Meeting and review records
 
-| Date or cadence | Record | Evidence |
+We began meeting September 16. Our [Team Contract](Team_Contract.md) sets Wednesdays at 3 p.m. in Clifton Court Hall, with 1-2 hours scheduled. We reconstructed likely agendas from commits and project records. Individual attendance, duration, and decisions still need confirmation.
+
+| Wednesday | Reconstructed agenda or planned work | Supporting record |
 | --- | --- | --- |
-| Wednesdays from Sep 16 | Brian reported that weekly team meetings began September 16. The contract schedules Wednesdays at 3 p.m. for 1-2 hours in Clifton Court Hall. Dated attendance, decisions, and actual durations for those meetings remain to be confirmed. | [Team Contract](Team_Contract.md) |
-| Oct 14 | Team Agri-AI documented five review actions on coverage, access, feed behavior, references, and AI quality. The original record leaves these items open. | [D2 peer review notes](Design_Diagrams/Peer_Review_Notes.md) |
-| Nov 16 | All five members took part in a 30-minute full-deck practice including pauses and retries. Dr. Bhide separately reviewed the deck by email with no requested revisions. | [Rehearsal log](Presentation/Run_Sheet.md#rehearsal-log) · [Advisor feedback record](Presentation/Advisor_Feedback.md) |
+| Sep 16 | Set our meeting schedule, clarify the problem of comparing nearby specials, and review economic, social, and ethical constraints. | [Team contract commit](https://github.com/BrianN45/Senior-Design/commit/d3b8c56) · [Project scope commit](https://github.com/BrianN45/Senior-Design/commit/ae74784) |
+| Sep 23 | Refine student and owner stories, walk through the browse flow, and define acceptance checks for age, freshness, and accessibility. | [User stories commit](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4) |
+| Sep 30 | Sketch our D0 service boundaries and I1-I5, and trace how owner submissions and venue posts enter the feed. | [D0 commit, Oct 2](https://github.com/BrianN45/Senior-Design/commit/53a1aa7) |
+| Oct 7 | Review D1's deal model, shared backend contracts, and the choice of PostgreSQL for durable background jobs. | [D1 commit](https://github.com/BrianN45/Senior-Design/commit/2078264) · [Backend revisions](https://github.com/BrianN45/Senior-Design/commit/d4aecd8) |
+| Oct 14 | Walk through D2 client and ingestion flows. Record peer review actions on source access, feed behavior, edge cases, references, and AI quality. | [D2 commit](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Peer review notes](Design_Diagrams/Peer_Review_Notes.md) |
+| Oct 21 | Follow up on our five peer review actions. Check access evidence, the today-versus-active example, and the proposed AI evaluation. | [Scheduled review follow-up](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) |
+| Oct 28 | Align requirement IDs and interfaces, assign tasks and milestones, and record owners for open decisions. | [Requirements and spec commit](https://github.com/BrianN45/Senior-Design/commit/38e9256) · [Task list commit](https://github.com/BrianN45/Senior-Design/commit/3e08bf3) |
+| Nov 4 | Map tests to requirements and review fixtures for age gating, schedule limits, accessibility, and owner publication timing. | [Test plan commit](https://github.com/BrianN45/Senior-Design/commit/6a4350b) |
+| Nov 11 | Review our responsible-use controls for alcohol offers, data retention, source permission, and credential handling. | [Ethics and audit commit](https://github.com/BrianN45/Senior-Design/commit/e33d2ff) |
+| Nov 18 | Check our slide order, speaking handoffs, timing, and anticipated questions. Capture rehearsal notes and advisor feedback. | [Run sheet commit](https://github.com/BrianN45/Senior-Design/commit/1a6d03a) · [Advisor feedback](Presentation/Advisor_Feedback.md) |
+| Nov 25 | Planned slot. Compare our report and notebook entries with the repository and identify missing effort evidence. | [Design notebook evidence](#individual-effort-evidence) |
+| Dec 2 | Planned slot. Review the report, confirm individual submission materials, and check the status of the signed advisor form. | [Report contents](#contents) |
+
+On November 16, we rehearsed all 11 slides for 30 minutes, including pauses and retries. We also received positive feedback on the slides by email with no requested revisions. [Rehearsal log](Presentation/Run_Sheet.md#rehearsal-log) · [Advisor feedback](Presentation/Advisor_Feedback.md)
 
 ### Individual effort evidence
 
-Brian supplied a uniform planning estimate of **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. Each member's 30-minute November 16 rehearsal is documented and included in the Week 12 estimate. Git identifies contributions and authorship. Members still need to confirm actual hours and supply supporting records for the 45-hour criterion.
+We use a planning estimate of **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. We include the documented 30-minute rehearsal in each member's Week 12 estimate. We still need to confirm actual hours and supply supporting records for the 45-hour criterion.
 
 | Member | Dated evidence to cross-check | 14-week estimate | Documented |
 | --- | --- | --- | --- |
