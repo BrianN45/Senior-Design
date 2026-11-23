@@ -7,6 +7,8 @@
 **Date:** October 7, 2026
 **Document Version:** 0.1
 
+**Design-report reading guide (November 23, 2026).** The relational diagram documents the D1 base schema. Use it with [D2's additions](D2_Detailed_Design.md#24-c4-data-additions-and-invariants). STUDENT and SAVED_DEAL show the original bookmark proposal, deferred in OQ-05. For current browse and ingestion behavior, use the [Technical Specification](../Technical_Specification.md). D1's active-only default and provider API assumptions document the earlier design.
+
 ---
 
 # 1. Header, Scope, and Conventions
@@ -24,7 +26,7 @@ BarCat Deals gives University of Cincinnati students an easier way to find deals
 
 ## Scope
 
-This document details the **Backend API Service (C3)** and the **Deal Ingestion Service (C5)**, together with the data they use in the **Deal Database (C4)**. It covers the deal extraction and de-duplication algorithm and the active-deal search algorithm. The Student Web App (C1), Owner Web Portal (C2), and External Social Media APIs (C6) are deferred to D2.
+This document details the **Backend API Service (C3)** and the **Deal Ingestion Service (C5)**, together with the data they use in the **Deal Database (C4)**. It covers the deal extraction and de-duplication algorithm and the active-deal search algorithm. The Student Web App (C1), Owner Web Portal (C2), and External Social Media Sources (C6) are deferred to D2.
 
 ## Diagram Conventions
 

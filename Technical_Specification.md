@@ -3,7 +3,7 @@
 **Course:** CS 5001 - Senior Design I, University of Cincinnati  
 **Team:** Brian Nguyen, Kaustubh Mathur, Ved Sanap, Meredith Bartel, Kiki Vasilev  
 **Advisor:** Dr. Hrishikesh Vinayak Bhide  
-**Version:** 0.4 | **Date:** November 4, 2026 | **Status:** Draft for review
+**Version:** 0.5 | **Date:** November 23, 2026 | **Status:** Draft for review
 
 **Requirements baseline:** [Requirements Document](Requirements_Document.md), **version 0.2**, dated **October 28, 2026**. Section 6 traces every REQ, NFR, and CON ID to this version. Its [glossary](Requirements_Document.md#4-glossary) and [assumptions/open-question register](Requirements_Document.md#9-assumptions-and-open-questions) also apply to this specification.
 
@@ -14,6 +14,7 @@
 | 0.1 | 2026-10-28 | Consolidated D0-D2 design and requirement mappings. | AI-assisted team draft |
 | 0.2 | 2026-10-28 | Shortened explanations and tables; preserved interfaces, constraints, and complete traceability. | AI-assisted revision |
 | 0.3 | 2026-10-28 | Referenced Requirements Document version 0.2 and its shared assumptions/open-question register. | AI-assisted revision |
+| 0.5 | 2026-11-23 | Aligned D0/D2 source names and made the OQ-07 proposed refresh configuration explicit. | AI-assisted reconciliation; approvals pending |
 | 0.4 | 2026-11-04 | Linked the Week 10 Test Plan and expanded existing TC groups into A-C cases for major requirements; retained all group-to-requirement mappings and acceptance targets. | AI-assisted draft; team review pending |
 
 
@@ -23,9 +24,9 @@ BarCat Deals uses a client-server architecture with background ingestion. **C1 S
 
 For browsing, C3 constructs scheduled occurrences in Eastern time and returns eligible deals with source and freshness information. The default feed includes today's offers, including those starting later today. For owner submissions, C3 checks the approved owner-to-venue mapping and commits the deal and submission result before returning success.
 
-**C5 Deal Ingestion Service** web scrapes approved venue social-media pages from **C6 External Social Media Sources**, asks an AI model for structured deals, and submits validated results through C3. Posts, processing leases, and results remain durable so failed work can recover. External requests and AI calls run outside database transactions and the browsing request path. OQ-01 defines source approval, request limits, and funding controls for web scraping. The linked D0-D2 diagrams retain the historical C6 label "External Social Media APIs".
+**C5 Deal Ingestion Service** web scrapes approved venue social-media pages from **C6 External Social Media Sources**, asks an AI model for structured deals, and submits validated results through C3. Posts, processing leases, and results remain durable so failed work can recover. External requests and AI calls run outside database transactions and the browsing request path. OQ-01 defines source approval, request limits, and funding controls for web scraping. The current D0 and D2 diagrams use the C6 source boundary defined here.
 
-Deployment uses separate Flask, API, and worker containers on Azure with managed PostgreSQL. The exact Azure service and budget remain unconfirmed. Shared modules **G1 authentication**, **G2 inline notices**, **G3 configuration**, and **G4 logging/health** run within these components. Supabase Auth supplies verified owner identity; students can browse through guest sessions. C5 receives no database credentials.
+Deployment uses separate Flask, API, and worker containers on Azure with managed PostgreSQL. The exact Azure service and budget remain unconfirmed. Shared modules **G1 Authentication and authorization**, **G2 Notifications**, **G3 Configuration**, and **G4 Logging and health** run within these components. Supabase Auth supplies verified owner identity; students can browse through guest sessions. C5 receives no database credentials.
 
 Existing diagrams are linked rather than duplicated:
 
@@ -114,7 +115,7 @@ Poll approved accounts every 15 minutes or the longer provider interval. Leases 
 
 **Publication:** Validate all owner fields before an atomic commit. Replay unchanged owner/key submissions; reject changed bodies or duplicate offers with 409. Automated confidence >=0.70 permits publication only with complete validated facts and approved enablement; 0.40-<0.70 is held, below 0.40 rejected. Treat uncertain alcohol as true. Duplicate matching requires equal schedule/category/alcohol/price/effective dates and title-token Jaccard >=0.80. Merge evidence without overwriting owner facts.
 
-**G1/G2:** Use hashed 256-bit session tokens, secure HttpOnly SameSite=Lax cookies, CSRF checks, 24-hour guest expiry, and authenticated expiry <=30 minutes/provider expiry. Recheck owner mapping per request. Render escaped semantic HTML, keyboard controls, field errors, and accessible notices. Revalidate visible feeds every 60 seconds; hide alcohol after failed eligibility refresh. OQ-07 must resolve refresh/network delay against the 60-second publication target.
+**G1/G2:** Use hashed 256-bit session tokens, secure HttpOnly SameSite=Lax cookies, CSRF checks, 24-hour guest expiry, and authenticated expiry <=30 minutes/provider expiry. Recheck owner mapping per request. Render escaped semantic HTML, keyboard controls, field errors, and accessible notices. Revalidate visible feeds every 30 seconds for the proposed OQ-07 test configuration and hide alcohol after failed eligibility refresh. Confirm the final interval by measuring the entire 60-second submit-to-visible budget in TC-012A-C; approval is open.
 
 **G3/G4:** Validate required settings before readiness; keep unapproved web scrapers/AI disabled. Emit redacted structured events with a 1,000-event maximum local buffer and 14-day retention target. Drop oldest buffered events on collector failure and report the count after recovery. Target daily backups, seven-day retention, and one successful restore exercise. Monitor latency, failures, cost, and backlog older than 24 hours. These operational defaults remain unverified.
 

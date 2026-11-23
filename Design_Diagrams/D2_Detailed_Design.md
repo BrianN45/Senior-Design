@@ -5,7 +5,9 @@
 **Advisor:** Dr. Hrishikesh Vinayak Bhide  
 **Assignment:** Design D2 - Detailed Design
 **Date:** October 14, 2026  
-**Document Version:** 1.2
+**Document Version:** 1.3
+
+**November 23, 2026 reconciliation.** Aligns the C6 source boundary and proposed refresh configuration with the [Technical Specification](../Technical_Specification.md). Requirements and acceptance approvals remain in the [open-question register](../Requirements_Document.md#92-open-questions-and-deferred-decisions). The [report matrix](../README.md#requirements-traceability-matrix) links the Week 9 IDs to the Week 10 procedures.
 
 ---
 
@@ -21,7 +23,7 @@ BarCat Deals gives University of Cincinnati students an easier way to find deals
 
 ## Scope and D2 Overview
 
-D0 defines six components and interfaces I1 through I5. D1 details the Backend API Service C3, Deal Database C4, and Deal Ingestion Service C5. D2 finishes the Student Web App C1, Owner Web Portal C2, and the boundary to External Social Media APIs C6. It also specifies authentication, notifications, configuration, and logging, and closes gaps between D1 and the Week 4 acceptance criteria. C3 remains the only application component allowed to read or write C4.
+D0 defines six components and interfaces I1 through I5. D1 details the Backend API Service C3, Deal Database C4, and Deal Ingestion Service C5. D2 finishes the Student Web App C1, Owner Web Portal C2, and the boundary to External Social Media Sources C6. It also specifies authentication, notifications, configuration, and logging, and closes gaps between D1 and the Week 4 acceptance criteria. C3 remains the only application component allowed to read or write C4.
 
 The selected stack remains Flask and Jinja for C1 and C2, FastAPI and Python for C3 and C5, PostgreSQL for C4, and Azure hosting. The shared services in this document are modules within those components, not additional microservices. The design and acceptance checks below are implementation specifications, not claims that the application has already been built or tested.
 
@@ -62,7 +64,7 @@ The primary owners below follow D0. Shared-module ownership is a proposed implem
 | C3 Backend API Service | D1 entities plus Figure 2; transient request DTOs | Eligibility and transaction algorithms in 2.5; I1 to I4 | Ved Sanap |
 | C4 Deal Database | D1 relational model plus 2.4 | Constraints, transactions, migrations, and recovery in 2.4; I4 | Meredith Bartel |
 | C5 Deal Ingestion Service | Durable work state in C4 through C3; transient fetched page | Normalize, extract, and acknowledge in 2.7; I3 and I5 | Kiki Vasilev |
-| C6 External Social Media APIs | Provider-owned data; no application-owned persistent data in C6 | Read-only provider adapter boundary in 2.7; I5 | External; Kiki owns adapters |
+| C6 External Social Media Sources | Provider-owned data; no application-owned persistent data in C6 | Read-only provider adapter boundary in 2.7; I5 | External; Kiki owns adapters |
 | G1 Authentication and authorization | WEB_SESSION plus owner and student identity mapping | Guest age session, verified login, authorization; 2.8 | Ved Sanap |
 | G2 Notifications | No persistent data; response-derived notices | Accessible inline status and error notices; 2.9 | Brian Nguyen |
 | G3 Configuration | Versioned nonsecret deployment settings and secret references | Validate configuration at startup; 2.9 | Kiki Vasilev |
@@ -74,7 +76,7 @@ The primary owners below follow D0. Shared-module ownership is a proposed implem
 | I2 C2 to C3 | HTTPS JSON; seven logical form items plus structured schedule. The authenticated owner determines venue identity. A request key makes retries safe. | C3 validates atomically; C2 preserves form values. |
 | I3 C5 to C3 | HTTPS JSON; raw-post registration, work claim, result completion, and failure reporting are separate operations. C5 never receives database credentials. | C5 retries transport errors; C3 owns leases and durable results. |
 | I4 C3 to C4 | Parameterized SQL through SQLAlchemy; transactions return domain records rather than exposing SQL to clients. | C3 rolls back; G4 records dependency failure. |
-| I5 C5 to C6 | Provider HTTPS API behind `fetch_posts`; normalized posts hide provider-specific payloads and pagination. | C5 handles throttling and authorization failure. |
+| I5 C5 to C6 | Approved venue pages over HTTPS behind `fetch_posts`; C5 normalizes page content and pagination. | C5 handles throttling and authorization failure. |
 
 These revisions replace D0's client-supplied age flag, direct-to-database ingestion arrows, and payload-dropping fallback. They also refine D1's active-only search. D0 and D1 remain historical design documents; the implementation uses D2 where the contracts differ. The API is not yet released, so these are preimplementation changes to `/api/v1`; after release, incompatible changes require `/api/v2` as described in D1.
 
@@ -117,7 +119,7 @@ flowchart TD
     class goal,conventions note;
 ```
 
-**Figure 1.** The student and owner clients share C3 authorization and validation. Failures return to the initiating page; only a committed owner transaction leads to success. Editable Mermaid source: [D2-client-flow.mmd](Diagrams/Diagram-Code/D2-client-flow.mmd).
+**Figure 1.** The student and owner clients share C3 authorization and validation. Failures return to the initiating page; only a committed owner transaction leads to success.
 
 ### Data Model
 
@@ -138,7 +140,7 @@ Input is a browser request with optional filters and the application session coo
 3. Render venue, offer, price text, schedule, and last-checked time for every returned card. Provide a labeled next-page link until `next_cursor` is null so all matching deals are reachable. Show food as a prominent filter without changing the required start-time ordering.
 4. Display the dataset's last update above the feed. Mark every deal checked more than 24 hours ago “Possibly out of date”; a null check time means “Never verified.” Staleness alone never removes an otherwise eligible deal.
 5. A detail link requests `GET /api/v1/deals/{deal_id}`. Render the same eligibility rules and a labeled original-post link for automated deals. Owner submissions display “Submitted by venue” instead of an invented source link.
-6. Revalidate on navigation and every 60 seconds while the page is visible. A failed refresh may retain already rendered nonalcohol cards with a failure notice, but hides alcohol cards until eligibility is revalidated. `401` or `403` clears the alcohol view immediately. Never replace failure with an empty success list.
+6. Revalidate on navigation. Use 30 seconds for visible-feed revalidation in the proposed OQ-07 test configuration. Measure the whole submit-to-visible path before approving the interval. A failed refresh may retain already rendered nonalcohol cards with a failure notice, but hides alcohol cards until eligibility is revalidated. `401` or `403` clears the alcohol view immediately. Never replace failure with an empty success list.
 
 ### Accessibility
 
@@ -177,7 +179,7 @@ Input is the seven logical required items plus session and request key. Output i
 3. Validate required values, field lengths, enum values, and schedule boundaries in the portal for feedback, then repeat validation in C3. Empty or invalid input returns `422` with field names. A mismatched venue name or address returns a profile-mismatch error, not a write to another venue. Owners correct profile data through onboarding support.
 4. Generate a UUID request key when the form is first presented. Reuse it after a timeout or retry of unchanged content. C3 scopes it to the owner, compares a canonical body hash, and commits the base deal, submitted subtype, and stored response in one transaction.
 5. Return `201` only after commit, followed by a confirmation and detail link. Matching repeated requests return the original status and body. A different body under the same key returns `409`; corrected content gets a new key. A distinct key for the same canonical offer returns `409` with the existing deal ID.
-6. Published owner records are available immediately to a new eligible feed request. Existing open feeds refresh within 60 seconds. Measure submit-to-visible latency against AC-03.1; a future or out-of-radius deal is stored but displayed only when it matches the selected feed.
+6. Published owner records are available immediately to a new eligible feed request. Existing visible feeds use the proposed 30-second test configuration. The end-to-end target includes commit, the refresh wait, transfer, and rendering. Measure submit-to-visible latency against AC-03.1; a future or out-of-radius deal is stored but displayed only when it matches the selected feed.
 
 ### Complexity
 
@@ -232,7 +234,7 @@ flowchart TD
     class goal,conventions note;
 ```
 
-**Figure 2.** D2 extends the D1 entities instead of replacing them. It adds session and request-result records, multiple social accounts per venue, source evidence, and worker leases. The diagram omits unchanged D1 attributes. Editable Mermaid source: [D2-data-model.mmd](Diagrams/Diagram-Code/D2-data-model.mmd).
+**Figure 2.** D2 extends the D1 entities instead of replacing them. It adds session and request-result records, multiple social accounts per venue, source evidence, and worker leases. The diagram omits unchanged D1 attributes.
 
 | Entity or field | Type and rule | Why it is needed |
 | --- | --- | --- |
@@ -356,7 +358,7 @@ title: BarCat Deals - Figure 3 - Durable ingestion with explicit failure paths
 flowchart TD
     goal["Goal: Create an easier way for UC students to view deals at bars and restaurants."]
 
-    provider["C6 Authorized posts<br/>Normalized by C5"]
+    provider["C6 approved venue pages<br/>I5 fetch and normalization by C5"]
     queued["new<br/>Raw post stored by C3"]
     processing["processing<br/>C3 lease; C5 AI work"]
     processed["processed<br/>Atomic results stored<br/>Published or held deals"]
@@ -392,11 +394,11 @@ flowchart TD
     class goal,guard_rules,conventions note;
 ```
 
-**Figure 3.** C3 persists states and lease tokens; C5 performs external work. Terminal failure retains the raw post for investigation. Editable Mermaid source: [D2-ingestion-states.mmd](Diagrams/Diagram-Code/D2-ingestion-states.mmd).
+**Figure 3.** C3 persists states and lease tokens; C5 performs external work. Terminal failure retains the raw post for investigation.
 
 ### C6 Interface
 
-The team does not implement the external platforms. Each adapter implements `fetch_posts(account_id:string, cursor:string|null, limit:int=25) -> PostPage`, with limit 1 to 100. `PostPage` contains normalized `posts[]` and `next_cursor:string|null`. Each post has platform enum instagram/facebook/x, external_id, account_id, text up to 5,000 characters, zero to ten image URLs, posted_at UTC, observed_at UTC, and a source_url. Oversized or malformed posts are quarantined with a reason instead of silently truncated. The adapter returns typed `RateLimited(retry_after)`, `Unauthorized`, `Unavailable`, or `InvalidPayload` errors. This is our interface, not a claim that every provider offers identical fields or permissions.
+C5 web scrapes only approved venue pages over HTTPS and stops on denied access. OQ-01 governs permission and request limits. Each adapter implements `fetch_posts(account_id:string, cursor:string|null, limit:int=25) -> PostPage`, with limit 1 to 100. `PostPage` contains normalized `posts[]` and `next_cursor:string|null`. Each post has platform enum instagram/facebook/x, external_id, account_id, text up to 5,000 characters, zero to ten image URLs, posted_at UTC, observed_at UTC, and a source_url. Oversized or malformed posts are quarantined with a reason instead of silently truncated. The adapter returns typed `RateLimited(retry_after)`, `Unauthorized`, `Unavailable`, or `InvalidPayload` errors. This is our interface, not a claim that every provider offers identical fields or permissions.
 
 ### Purpose
 
@@ -516,7 +518,7 @@ Must means required by an existing story, acceptance criterion, or constraint. D
 | AC-01.1c Show venue offer price time and last check | Must | DealView, price_text, occurrence timestamps and last_checked_at. EC-12; source validation is specified in Section 2.7. | Assert each card has these labels. Conditional OQ-03: absent price is disclosed, so complete source-price coverage is not claimed. |
 | AC-01.2 Zero alcohol and retain every eligible food deal | Must | G1 default false; B2 shared predicate before serialization; no filtering only in browser. EC-01, EC-15. | Exercise age dismissal and direct API requests; compare eligible nonalcohol food IDs to fixtures. |
 | AC-01.3 Show old data with last update and stale labels | Must | last_checked_at, is_stale, last_updated_at, stale_count; G2 summary. EC-05, EC-14; stale notices are specified in Section 2.9. | Test 24 h exactly, 24 h plus one second, mixed fresh/stale, and null checks; stale alone must not hide deals. |
-| AC-03.1a Valid seven-item submission visible within 60 seconds | Must | C2 commit-confirm flow, POST /owner/deals, immediate publication, 60-second C1 refresh. EC-03, EC-08. | Time valid currently eligible fixture from submit to feed visibility, including duplicate request replay. |
+| AC-03.1a Valid seven-item submission visible within 60 seconds | Must | C2 commit-confirm flow, POST /owner/deals, immediate publication, C1 visible-feed refresh (30 seconds proposed; OQ-07). EC-03, EC-08. | Time valid currently eligible fixture from submit to feed visibility, including duplicate request replay. |
 | AC-03.1b Missing item means zero saved deals and named error | Must | Seven-item validation in C2/C3, fields error map, atomic transaction. EC-02, EC-07; transaction invariants are specified in Section 2.4. | Omit each logical item independently; assert zero rows and named text error. |
 | AC-04.1 Zero serious and critical axe-core findings | Must | Feed/detail semantic templates, labels, contrast, focus, G2 status text. EC-07; accessible errors and fallbacks are specified in Sections 2.2 and 2.9. | Scan both pages in loaded, empty, restricted, stale, and error states against WCAG 2.1 AA configuration; no results claimed yet. |
 | CON-ECON Hosting and AI costs stay manageable | Must constraint | G3 funded cap and attempt reservations; A2 bounded calls; small container deployment. EC-13; configuration validation is specified in Section 2.9. | Verify cap pauses ingestion and manual submissions still work. Numerical budget and service costs open in OQ-04. |
@@ -558,7 +560,7 @@ The D0 decision log is the baseline for hybrid sources, age filtering, cloud per
 
 **DR-07 Truthful stale data and explicit price gaps.** We chose labeled old deals and explicit missing-price text over deleting old records or inferring prices because AC-01.3 requires retaining stale offers and source material may omit facts. We accepted the trade-off that an offer may need confirmation with the venue because honest uncertainty is preferable to misleading freshness or invented prices. OQ-03 remains a real acceptance gap, not a completed requirement.
 
-**DR-08 Approved APIs with manual submission fallback.** We chose provider adapters with verified access over unofficial scraping because the project cannot assume permission or reliable availability for arbitrary venue posts. We accepted the trade-off of narrower automated coverage because owner submissions satisfy the inclusion constraint and preserve usefulness during platform outages. This develops D0's hybrid-source decision and D1's API-access question; EC-14 defines the failure behavior.
+**DR-08 Approved venue pages with manual submission fallback.** The current technical specification uses adapters to web scrape approved venue pages. Access approval and request limits must be recorded for each enabled source. We accepted the trade-off of narrower automated coverage because owner submissions satisfy the inclusion constraint and preserve usefulness during platform outages. This develops D0's hybrid-source decision and D1's API-access question; EC-14 defines the failure behavior. This updates D2's original provider API assumption.
 
 **DR-09 Minimal shared services with explicit operational limits.** We chose inline notifications, startup validation, bounded retries, and structured hosting logs over push messaging, a custom monitoring platform, or unbounded background work because those larger systems have no current story and add cost. We accepted the trade-off of operator intervention for failed ingestion and configuration because the five-person team can support that scope. Budget defaults require OQ-04 approval; no unsupported free-tier or performance claims are assumed.
 

@@ -12,7 +12,7 @@
 - **Format:** Email review.
 - **Participants:** Dr. Bhide sent the feedback to Brian Nguyen.
 - **Duration:** Not recorded; feedback was provided by email.
-- **Presentation reviewed:** The original 11-slide [Senior-Design presentation](Evidence/Reviewed_Presentation.pptx).
+- **Presentation reviewed:** The original 11-slide [Senior-Design presentation](https://github.com/BrianN45/Senior-Design/blob/6072708/Presentation/Evidence/Reviewed_Presentation.pptx).
 
 ![Advisor email feedback](Evidence/Advisor_Feedback_Email_2026-11-16.png)
 

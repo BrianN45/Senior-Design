@@ -6,12 +6,12 @@
 | 02 | Specify the C2 Owner Web Portal price policy and test/validation plan for seven-item submissions and publication timing. | Kaustubh Mathur |
 | 03 | Refine the C3 Backend API Service and G1 Authentication and authorization contracts, edge-case coverage, and ethics analysis. | Ved Sanap |
 | 04 | Document the C4 Deal Database and G4 Logging and health recovery plans, technical references, and technical communication package. | Meredith Bartel |
-| 05 | Investigate C5 Deal Ingestion Service, C6 External Social Media APIs, and G3 Configuration access and release gates for the fall presentations. | Kiki Vasilev |
+| 05 | Investigate C5 Deal Ingestion Service, C6 External Social Media Sources, and G3 Configuration access and release gates for the fall presentations. | Kiki Vasilev |
 | 06 | Develop the C4 Deal Database migrations, relational invariants, and representative venue and deal fixtures. | Meredith Bartel |
 | 07 | Develop the C3 Backend API Service shared data contracts, validation errors, and I1-I4 contract test harness. | Ved Sanap |
 | 08 | Develop the C1 Student Web App Flask/Jinja feed and detail templates using fixture-backed data. | Brian Nguyen |
 | 09 | Develop the C2 Owner Web Portal login screens and seven-item submission form with accessible field validation. | Kaustubh Mathur |
-| 10 | Develop the C5 Deal Ingestion Service normalized C6 External Social Media APIs adapters and replayable post fixtures. | Kiki Vasilev |
+| 10 | Develop C5 Deal Ingestion Service adapters for approved C6 External Social Media Sources and replayable post fixtures. | Kiki Vasilev |
 | 11 | Develop C3 Backend API Service and G1 Authentication and authorization guest age sessions and verified owner access. | Ved Sanap |
 | 12 | Develop C1 Student Web App live feed integration, pagination, source and freshness displays, and G2 Notifications. | Brian Nguyen |
 | 13 | Develop C2 Owner Web Portal atomic owner submission and idempotent publication through the C3 Backend API Service. | Kaustubh Mathur |
