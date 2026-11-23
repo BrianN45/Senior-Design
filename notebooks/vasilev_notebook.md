@@ -10,7 +10,7 @@ BarCat Deals · CS 5001 Senior Design I · University of Cincinnati
 
 Compiled from repository evidence through November 23, 2026. Week labels use Monday start dates based on the Week 4 story work on September 23 and the Week 14 deadline on December 2. Completed-week entries were reconstructed. Team artifacts provide context when individual activity is unrecorded. Assigned items identify responsibility and require member confirmation of work and time.
 
-Brian reported Wednesday meetings starting September 16. The [team contract](../Team_Contract.md) plans 1-2 hours per meeting. Weekly entries do not count planned meeting duration toward actual effort. Add dated work and meeting durations with supporting records.
+Brian reported Wednesday meetings starting September 16. The [team contract](../Team_Contract.md) allows 1-2 hours per meeting. Brian supplied a uniform 2-3 h weekly planning estimate. Actual hours require member confirmation. Weeks 13 and 14 are projected.
 
 ## Week 01 · Aug 31 · Reconstructed
 
@@ -18,7 +18,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** No work or decision can be attributed from the available records.
 
-**Hours.** Unlogged.
+**Hours.** 2-3 h estimated.
 
 **Blocker or evidence gap.** No personal hours or discussion record is available.
 
@@ -28,7 +28,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The group recorded the BarCat Deals identity and team roster.
 
-**Hours.** Unlogged.
+**Hours.** 2-3 h estimated.
 
 **Blocker or evidence gap.** The weekly meeting cadence had not started.
 
@@ -38,7 +38,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The contract scheduled Wednesday meetings and recorded the initial project scope.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** Attendance, duration, and minutes for this meeting need member confirmation.
 
@@ -48,7 +48,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The story baseline includes under-21 visitors, venue owners, and accessibility.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** No dated individual time entry or meeting minutes are available.
 
@@ -58,7 +58,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The design uses an API, separate clients, persistent storage, and a background pipeline.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** Individual design-session minutes are missing.
 
@@ -68,7 +68,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The team recorded an initial Flask/FastAPI/PostgreSQL stack and a database-backed queue.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** Personal activity and hours beyond attributable commits need confirmation.
 
@@ -78,7 +78,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** Keep unapproved adapters off and retain an owner-only path.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** No permitted fetch or approved quality evaluation has been recorded.
 
@@ -88,7 +88,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** PR-02 proposed one permitted fetch per enabled source.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** No follow-up minutes or test evidence are available.
 
@@ -98,7 +98,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** Documented funding, permissions, and factual evaluation as conditions for automation.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** Approved sources and a funded model remain open.
 
@@ -108,7 +108,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The plan checks published accuracy, coverage, and wrong time, price, or alcohol facts.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** The fixture and accepted evaluation results are pending.
 
@@ -118,7 +118,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The design keeps manual publication available during source and AI outages.
 
-**Hours.** Unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
 
 **Blocker or evidence gap.** No dated individual preparation time or enablement approval is documented.
 
@@ -128,7 +128,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** The run sheet allocates two minutes per member in the planned presentation.
 
-**Hours.** 0.5 h logged for November 16 rehearsal. Other time unlogged. Wednesday meeting on the reported cadence. Attendance and actual time unconfirmed.
+**Hours.** 2-3 h estimated, including 0.5 h documented at the November 16 rehearsal.
 
 **Blocker or evidence gap.** Actual presentation and recording evidence, and preparation time beyond the rehearsal, remain unverified.
 
@@ -138,7 +138,7 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** Check the report's links and confirm individual contributions before submission.
 
-**Hours.** Pending.
+**Hours.** 2-3 h projected.
 
 **Blocker or evidence gap.** Personal work, attendance, and duration for this week are pending.
 
@@ -148,12 +148,12 @@ Brian reported Wednesday meetings starting September 16. The [team contract](../
 
 **Decision or next action.** Confirm dated hours and evidence with each author and complete the individual submissions.
 
-**Hours.** Pending.
+**Hours.** 2-3 h projected.
 
 **Blocker or evidence gap.** Member-confirmed hours, personal text, and the signed advisor form remain pending.
 
 ## Contribution summary
 
-**Total hours.** 0.5 h documented. Actual semester total unconfirmed.
+**Total hours.** 28-42 h estimated across 14 weeks, including 0.5 h documented. Actual semester total unconfirmed.
 
 Git records Kiki's early project-description and biography contributions. The action log, test plan, and run sheet identify C5/C6/G3 ownership, source approvals, the labeled extraction fixture, and the delivery plan. Permitted source access and funded quality approval still gate live automation.

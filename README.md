@@ -178,12 +178,12 @@ The public record links each member's design notebook and contribution summary. 
 
 ### Individual effort evidence
 
-Each notebook has 14 week entries and records distinguishable repository evidence, assignments, and missing records. The 30-minute rehearsal is the duration corroborated for every member. Git identifies artifacts and authorship, while the planned schedule and effort matrix describe expected work. Actual effort needs each member's confirmation and supporting records before the 45-hour criterion can be checked.
+Brian supplied a uniform planning estimate of **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. Each member's 30-minute November 16 rehearsal is documented and included in the Week 12 estimate. Git identifies contributions and authorship. Members still need to confirm actual hours and supply supporting records for the 45-hour criterion.
 
-| Member | Dated evidence to cross-check | Documented duration toward 45 h |
-| --- | --- | --- |
-| Brian Nguyen | [D2 and peer review](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Test Plan](https://github.com/BrianN45/Senior-Design/commit/6a4350b) · [Notebook](notebooks/nguyen_notebook.md) | 0.5 h rehearsal; other time unlogged |
-| Kaustubh Mathur | [User stories](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4) · [D1 backend/job/hosting draft](https://github.com/BrianN45/Senior-Design/commit/d4aecd8) · [Notebook](notebooks/mathur_notebook.md) | 0.5 h rehearsal; other time unlogged |
-| Ved Sanap | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/54501dc) · [PR-01 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/sanap_notebook.md) | 0.5 h rehearsal; other time unlogged |
-| Meredith Bartel | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/f380900) · [PR-04 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/bartel_notebook.md) | 0.5 h rehearsal; other time unlogged |
-| Kiki Vasilev | [Project description](https://github.com/BrianN45/Senior-Design/commit/ae74784) · [PR-02 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/vasilev_notebook.md) | 0.5 h rehearsal; other time unlogged |
+| Member | Dated evidence to cross-check | 14-week estimate | Documented |
+| --- | --- | --- | --- |
+| Brian Nguyen | [D2 and peer review](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Test Plan](https://github.com/BrianN45/Senior-Design/commit/6a4350b) · [Notebook](notebooks/nguyen_notebook.md) | 28-42 h | 0.5 h rehearsal |
+| Kaustubh Mathur | [User stories](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4) · [D1 revisions](https://github.com/BrianN45/Senior-Design/commit/d4aecd8) · [Notebook](notebooks/mathur_notebook.md) | 28-42 h | 0.5 h rehearsal |
+| Ved Sanap | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/54501dc) · [PR-01 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/sanap_notebook.md) | 28-42 h | 0.5 h rehearsal |
+| Meredith Bartel | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/f380900) · [PR-04 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/bartel_notebook.md) | 28-42 h | 0.5 h rehearsal |
+| Kiki Vasilev | [Project description](https://github.com/BrianN45/Senior-Design/commit/ae74784) · [PR-02 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/vasilev_notebook.md) | 28-42 h | 0.5 h rehearsal |
