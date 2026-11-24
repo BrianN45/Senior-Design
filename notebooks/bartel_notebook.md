@@ -8,152 +8,148 @@ BarCat Deals · CS 5001 Senior Design I · University of Cincinnati
 
 **Design responsibility** · C4 Deal Database and G4 Logging and health
 
-Compiled from repository evidence through November 23, 2026. Week labels use Monday start dates based on the Week 4 story work on September 23 and the Week 14 deadline on December 2. Completed-week entries were reconstructed. Team artifacts provide context when individual activity is unrecorded. Assigned items identify responsibility and require member confirmation of work and time.
+We began meeting September 16. Our [team contract](../Team_Contract.md) sets Wednesdays at 3 p.m. in Clifton Court Hall, with 1-2 hours scheduled. We reconstructed the [Wednesday agendas](../README.md#meeting-and-review-records) from commits and project records.
 
-Brian reported Wednesday meetings starting September 16. The [team contract](../Team_Contract.md) allows 1-2 hours per meeting. Brian supplied a uniform 2-3 h weekly planning estimate. Actual hours require member confirmation. Weeks 13 and 14 are projected.
+Weeks begin on Mondays. We estimate 2-3 hours per week. Weeks 13-14 are projections.
 
 ## Week 01 · Aug 31 · Reconstructed
 
-**Work and evidence.** Team record. There are no dated repository entries in this week.
+**Work and evidence.** Our dated project records begin with the [September 8 initial commit](https://github.com/BrianN45/Senior-Design/commit/1a2f28a).
 
-**Decision or next action.** No work or decision can be attributed from the available records.
+**Decision or next action.** Our first recorded project scope appears in Week 2.
 
 **Hours.** 2-3 h estimated.
-
-**Blocker or evidence gap.** No personal hours or discussion record is available.
 
 ## Week 02 · Sep 7 · Reconstructed
 
-**Work and evidence.** Added the professional biography ([September 9 commit](https://github.com/BrianN45/Senior-Design/commit/f380900)). Team record. The repository and early description entered Git on September 8, followed by team information and professional biographies.
+**Work and evidence.** I added my professional biography ([September 9 commit](https://github.com/BrianN45/Senior-Design/commit/f380900)). We set up the repository, recorded our roster, and drafted the [project description](../Project-Description.md).
 
-**Decision or next action.** The group recorded the BarCat Deals identity and team roster.
+**Decision or next action.** We focused the project on one place to compare nearby specials.
 
 **Hours.** 2-3 h estimated.
 
-**Blocker or evidence gap.** The weekly meeting cadence had not started.
-
 ## Week 03 · Sep 14 · Reconstructed
 
-**Work and evidence.** Team record. The first weekly Wednesday meeting was reported for September 16. The team contract, constraints, and project description were committed.
+**Work and evidence.** We recorded our initial scope, [constraints](../Constraints.md), and Wednesday schedule.
 
-**Decision or next action.** The contract scheduled Wednesday meetings and recorded the initial project scope.
+**Wednesday, Sep 16 · Reconstructed agenda.** Set our meeting schedule, clarify the problem of comparing nearby specials, and review economic, social, and ethical constraints. [Team contract commit](https://github.com/BrianN45/Senior-Design/commit/d3b8c56) · [Project scope commit](https://github.com/BrianN45/Senior-Design/commit/ae74784)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We framed the design around economic, social, and ethical constraints.
 
-**Blocker or evidence gap.** Attendance, duration, and minutes for this meeting need member confirmation.
+**Hours.** 2-3 h estimated.
 
 ## Week 04 · Sep 21 · Reconstructed
 
-**Work and evidence.** Team record. The team documented four stories and the student browsing use case.
+**Work and evidence.** We drafted four [user stories](../User_Stories.md) and a student browsing use case.
 
-**Decision or next action.** The story baseline includes under-21 visitors, venue owners, and accessibility.
+**Wednesday, Sep 23 · Reconstructed agenda.** Refine student and owner stories, walk through the browse flow, and define acceptance checks for age, freshness, and accessibility. [User stories commit](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We included age-appropriate browsing, venue-owner submissions, and accessibility in the story baseline.
 
-**Blocker or evidence gap.** No dated individual time entry or meeting minutes are available.
+**Hours.** 2-3 h estimated.
 
 ## Week 05 · Sep 28 · Reconstructed
 
-**Work and evidence.** Team record. The team recorded the Week 5 D0 architecture and interfaces.
+**Work and evidence.** We drafted the [D0 architecture](../Design_Diagrams/D0_Detailed_Design.md) and I1-I5.
 
-**Decision or next action.** The design uses an API, separate clients, persistent storage, and a background pipeline.
+**Wednesday, Sep 30 · Reconstructed agenda.** Sketch our D0 service boundaries and I1-I5, and trace how owner submissions and venue posts enter the feed. [D0 commit, Oct 2](https://github.com/BrianN45/Senior-Design/commit/53a1aa7)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We use separate clients, a backend API, persistent storage, and a background ingestion pipeline.
 
-**Blocker or evidence gap.** Individual design-session minutes are missing.
+**Hours.** 2-3 h estimated.
 
 ## Week 06 · Oct 5 · Reconstructed
 
-**Work and evidence.** The [planning package](../Planning/Planning.pdf) identifies Meredith as a D1 verifier for the data-model milestone. Team record. D1 documented relational entities, an API contract, and processing approaches.
+**Work and evidence.** The [planning package](../Planning/Planning.pdf) lists me as a D1 verifier for the data-model milestone. We documented the relational model, API contract, and technology choices in [D1](../Design_Diagrams/D1_Detailed_Design.md).
 
-**Decision or next action.** D1 recorded the base relational entities and links.
+**Wednesday, Oct 7 · Reconstructed agenda.** Review D1's deal model, shared backend contracts, and the choice of PostgreSQL for durable background jobs. [D1 commit](https://github.com/BrianN45/Senior-Design/commit/2078264) · [Backend revisions](https://github.com/BrianN45/Senior-Design/commit/d4aecd8)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We selected Flask, FastAPI, and PostgreSQL, with background jobs backed by the database.
 
-**Blocker or evidence gap.** The verifier assignment does not record review duration.
+**Hours.** 2-3 h estimated.
 
 ## Week 07 · Oct 12 · Reconstructed
 
-**Work and evidence.** Received PR-04 for D2 technical references ([peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items)). Team record. D2 and the [peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) recorded completed design artifacts and Team Agri-AI feedback.
+**Work and evidence.** I took PR-04 for D2 technical references ([peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items)). We developed [D2](../Design_Diagrams/D2_Detailed_Design.md) and recorded feedback in the [peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items).
 
-**Decision or next action.** PR-04 asks for titles and links explaining T1-T3.
+**Wednesday, Oct 14 · Reconstructed agenda.** Walk through D2 client and ingestion flows. Record peer review actions on source access, feed behavior, edge cases, references, and AI quality. [D2 commit](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Peer review notes](../Design_Diagrams/Peer_Review_Notes.md)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We need titles and links for T1-T3.
 
-**Blocker or evidence gap.** The original action remains open.
+**Hours.** 2-3 h estimated.
 
 ## Week 08 · Oct 19 · Reconstructed
 
-**Work and evidence.** Team record. October 21 was the proposed follow-up date in the [peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items).
+**Work and evidence.** We set October 21 as the follow-up date for the [peer review action log](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items).
 
-**Decision or next action.** PR-04 follow-up was scheduled for October 21.
+**Wednesday, Oct 21 · Reconstructed agenda.** Follow up on our five peer review actions. Check access evidence, the today-versus-active example, and the proposed AI evaluation. [Scheduled review follow-up](../Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** For PR-04, I need to check that the D2 references match their cited claims.
 
-**Blocker or evidence gap.** No minutes confirm completion or time.
+**Hours.** 2-3 h estimated.
 
 ## Week 09 · Oct 26 · Reconstructed
 
-**Work and evidence.** The requirements register assigns Meredith the venue coordinates work. The [task list](../Planning/Tasklist.md) assigns C4 migrations, fixtures, and G4 diagnostics. Team record. The [planning package](../Planning/Planning.pdf), requirements, and technical specification entered Git October 28-29.
+**Work and evidence.** The requirements register assigns me the venue coordinates work. My tasks in the [task list](../Planning/Tasklist.md) include C4 migrations, fixtures, and G4 diagnostics. We added the [planning package](../Planning/Planning.pdf), [requirements](../Requirements_Document.md), and [technical specification](../Technical_Specification.md).
 
-**Decision or next action.** OQ-02 requires verified coordinates and campus-point approval before geographic acceptance.
+**Wednesday, Oct 28 · Reconstructed agenda.** Align requirement IDs and interfaces, assign tasks and milestones, and record owners for open decisions. [Requirements and spec commit](https://github.com/BrianN45/Senior-Design/commit/38e9256) · [Task list commit](https://github.com/BrianN45/Senior-Design/commit/3e08bf3)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We need to verify campus and venue coordinates before geographic acceptance.
 
-**Blocker or evidence gap.** Coordinates and hosting capability remain unverified.
+**Hours.** 2-3 h estimated.
 
 ## Week 10 · Nov 2 · Reconstructed
 
-**Work and evidence.** Team record. The Week 10 test plan recorded fixtures, pass criteria, and requirement-linked cases.
+**Work and evidence.** We drafted the [test plan](../Test_Plan.md) with fixtures, pass criteria, and cases linked to requirements.
 
-**Decision or next action.** The team documented representative and optional stretch workloads.
+**Wednesday, Nov 4 · Reconstructed agenda.** Map tests to requirements and review fixtures for age gating, schedule limits, accessibility, and owner publication timing. [Test plan commit](https://github.com/BrianN45/Senior-Design/commit/6a4350b)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We defined representative and optional larger test workloads.
 
-**Blocker or evidence gap.** Runtime tests, fixtures, and approvals remain pending.
+**Hours.** 2-3 h estimated.
 
 ## Week 11 · Nov 9 · Reconstructed
 
-**Work and evidence.** Task 04 in the [planning package](../Planning/Planning.pdf) assigns recovery plans and the technical communication package. Team record. The repository added the Ethics and Responsible-Use Statement and security audit.
+**Work and evidence.** My Task 04 in the [planning package](../Planning/Planning.pdf) covers recovery plans and technical communication. We recorded responsible-use controls in the [ethics statement](../Ethics_Statement.md) and checked repository credentials in the [security audit](../Security_Audit.md).
 
-**Decision or next action.** The design targets daily backups, seven-day retention, and a restore exercise.
+**Wednesday, Nov 11 · Reconstructed agenda.** Review our responsible-use controls for alcohol offers, data retention, source permission, and credential handling. [Ethics and audit commit](https://github.com/BrianN45/Senior-Design/commit/e33d2ff)
 
-**Hours.** 2-3 h estimated. Wednesday meeting attendance and duration unconfirmed.
+**Decision or next action.** We target daily backups, seven-day retention, and a restore exercise.
 
-**Blocker or evidence gap.** No hosting policy or restore result is documented.
+**Hours.** 2-3 h estimated.
 
 ## Week 12 · Nov 16 · Reconstructed
 
-**Work and evidence.** Rehearsed slides 7-8 on constraints and progress in the 30-minute full-group session. Team record. Participated in the November 16 full-group rehearsal recorded in the [rehearsal log](../Presentation/Run_Sheet.md#rehearsal-log).
+**Work and evidence.** We prepared the [slides](../Presentation/Senior-Design-Presentation.pptx), [run sheet](../Presentation/Run_Sheet.md), and [advisor feedback record](../Presentation/Advisor_Feedback.md). My assigned section was slides 7-8 on constraints and progress.
 
-**Decision or next action.** The run sheet allocates two minutes per member in the planned presentation.
+**Wednesday, Nov 18 · Reconstructed agenda.** Check our slide order, speaking handoffs, timing, and anticipated questions. Record advisor feedback. [Run sheet commit](https://github.com/BrianN45/Senior-Design/commit/1a6d03a) · [Advisor feedback](../Presentation/Advisor_Feedback.md)
 
-**Hours.** 2-3 h estimated, including 0.5 h documented at the November 16 rehearsal.
+**Decision or next action.** We assigned slide order, speaking handoffs, timing, and anticipated questions.
 
-**Blocker or evidence gap.** Actual presentation and recording evidence, and preparation time beyond the rehearsal, remain unverified.
+**Hours.** 2-3 h estimated.
 
 ## Week 13 · Nov 23 · In progress November 23
 
-**Work and evidence.** Scheduled work. The [design report](../README.md) and notebook reconstructions were assembled from available evidence on November 23.
+**Work and evidence.** We updated our [design report](../README.md) and notebooks with the Wednesday agendas, weekly effort estimates, and links to the full contribution records. Our [Budget](../README.md#9-budget) records zero expenses, donated items, or credits as of November 23.
 
-**Decision or next action.** Check the report's links and confirm individual contributions before submission.
+**Wednesday, Nov 25 · Planned.** Compare our report and notebook entries with the repository and identify missing effort evidence. [Design notebook evidence](../README.md#individual-effort-evidence)
+
+**Decision or next action.** We plan to use a Claude plan and have yet to set a budget. We also need to verify campus and venue coordinates.
 
 **Hours.** 2-3 h projected.
-
-**Blocker or evidence gap.** Personal work, attendance, and duration for this week are pending.
 
 ## Week 14 · Nov 30 · Planned
 
-**Work and evidence.** Scheduled work. The [design report](../README.md) and individual submissions are scheduled for the December 2 deadline.
+**Work and evidence.** We plan to review our [design report](../README.md) and individual submission materials for December 2.
 
-**Decision or next action.** Confirm dated hours and evidence with each author and complete the individual submissions.
+**Wednesday, Dec 2 · Planned.** Review the report, confirm individual submission materials, and check the status of the signed advisor form. [Report contents](../README.md#contents)
+
+**Decision or next action.** We plan to check the report links, review the notebooks, and check the status of the signed advisor form.
 
 **Hours.** 2-3 h projected.
 
-**Blocker or evidence gap.** Member-confirmed hours, personal text, and the signed advisor form remain pending.
-
 ## Contribution summary
 
-**Total hours.** 28-42 h estimated across 14 weeks, including 0.5 h documented. Actual semester total unconfirmed.
+**Total hours.** 28-42 h estimated across 14 weeks.
 
-The repository records Meredith's biography and names her for C4/G4, peer action PR-04, and verified venue coordinates. The run sheet records the constraints and progress rehearsal. Recovery policy, hosting capability, and restoration evidence remain implementation tasks.
+My assignments cover C4/G4, peer action PR-04, and venue coordinates. I prepared the constraints and progress portion of the presentation. We need to establish recovery policy, verify hosting capability, and test restoration. See our [shared contribution records](../README.md#individual-effort-evidence).
