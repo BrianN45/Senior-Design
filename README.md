@@ -67,7 +67,7 @@ C identifies a component, I an interface, and G a shared module. In D0, rectangl
 | C3 Backend API Service | Uses FastAPI to apply shared eligibility and authority rules, validate writes, and transact with C4. | Ved Sanap |
 | C4 Deal Database | Stores relational deals, owners, venues, provenance, sessions, and durable work. | Meredith Bartel |
 | C5 Deal Ingestion Service | Normalizes approved pages, uses leases and budget checks, and submits AI candidates through C3. | Kiki Vasilev |
-| C6 External Social Media Sources | Provides permitted venue pages through the conditional I5 boundary. | External; Kiki owns C5 adapters |
+| C6 External Social Media Sources | Provides permitted venue pages through the conditional I5 boundary. | External. We maintain the C5 adapters. |
 | G1 Authentication and authorization | Verifies owners, stores guest age answers, and enforces session/CSRF controls. | Ved Sanap |
 | G2 Notifications | Renders inline status, validation, freshness, and error notices. | Brian Nguyen |
 | G3 Configuration | Validates settings and gates source and AI enablement. | Kiki Vasilev |
@@ -107,9 +107,9 @@ The [D2 story-level crosswalk](Design_Diagrams/D2_Detailed_Design.md#4-requireme
 
 ### Implementation readiness
 
-The least certain element is live ingestion (OQ-01/04). Kiki needs a permitted fetch for each enabled adapter and confirmation of source limits. Ved and Kiki need funded hosting, identity, and AI settings. The proposed acceptance exercise compares extraction against 100 unseen labeled posts, requires at least 95% correct published offers and zero wrong alcohol, time, or price details, and requires nonzero publication. Keep collection and AI publication disabled until the applicable evidence and approval are recorded. Test the owner-only fallback through TC-020.
+The least certain element is live ingestion (OQ-01/04). We need a permitted fetch for each enabled adapter, confirmation of source limits, and funding for hosting, identity, and AI. We propose testing extraction against 100 unseen labeled posts. At least 95% of published offers must be correct, with zero wrong alcohol, time, or price details and at least one published offer. We will keep collection and AI publication disabled until we record the evidence and approvals. We will test the owner-only fallback through TC-020.
 
-Meredith and Brian still need to verify campus and venue coordinates (OQ-02). Kaustubh needs stakeholder agreement on optional owner prices versus the original price criterion (OQ-03). OQ-05 defers bookmarks and the moderation dashboard. Ved and the component owners need to confirm planning and constraints (OQ-06). Ved and Brian need to resolve the proposed performance profile (OQ-07). Use 95/100 loads under three seconds as the written baseline and report the proposed 100/100 result alongside it. Test a proposed 30-second visible-feed refresh against the full 60-second owner submission-to-display gate. The [open-question register](Requirements_Document.md#92-open-questions-and-deferred-decisions) owns approval status.
+We need to verify campus and venue coordinates (OQ-02) and agree with stakeholders on how optional owner prices fit the original price criterion (OQ-03). We have deferred bookmarks and the moderation dashboard (OQ-05). We need to reconcile the project plan and constraints (OQ-06) and settle the proposed performance profile (OQ-07). We will report the written baseline of 95/100 loads under three seconds alongside the proposed 100/100 target. We will test a proposed 30-second visible-feed refresh against the full 60-second owner submission-to-display limit. See the [open-question register](Requirements_Document.md#92-open-questions-and-deferred-decisions) for approval status.
 
 ## 4. Project Tasks and Timeline
 
@@ -135,8 +135,6 @@ The design also calls for source permission, notice and consent, restricted rete
 
 [Presentation PowerPoint](Presentation/Senior-Design-Presentation.pptx) · [Slides PDF](Presentation/Senior-Design-Presentation.pdf) · [Run sheet and rehearsal log](Presentation/Run_Sheet.md) · [Advisor feedback](Presentation/Advisor_Feedback.md)
 
-The 11-slide deck covers the problem and stakeholders, architecture, constraints, status, work division, and the planned Expo demonstration. In slide 10, the C2 and C3 labels are exchanged. The duty descriptions, run sheet, and assignment baseline put **Kaustubh Mathur on C2 Owner Web Portal** and **Ved Sanap on C3 Backend API Service**. Dr. Bhide's November 16 email gave positive feedback on the slides and requested no revisions.
-
 ## 7. Self-Assessment Essays
 
 The public record links each member's design notebook and contribution summary. Personal self-assessment essays still need author-written text or an approved public copy. Team and self assessment PDFs contain private peer ratings and are submitted individually.
@@ -155,9 +153,7 @@ The public record links each member's design notebook and contribution summary. 
 
 ## 9. Budget
 
-**Expenses recorded in the repository through November 23, 2026** · $0 documented. The team still needs to confirm actual expenses against any receipts or service statements.
-
-**Donated items and credits** · No received goods, services, or credits are documented, so the recorded donated value is $0. The constraints essay names Azure student credits as a possible source. Award, value, and availability are unconfirmed. OQ-04 tracks the proposed hosting/identity/AI funding cap and approval evidence.
+As of November 23, 2026, we have incurred no project expenses and received no donated items or credits. We plan to use a Claude plan and have yet to confirm a budget.
 
 ## 10. Appendix
 
@@ -183,20 +179,18 @@ We began meeting September 16. Our [Team Contract](Team_Contract.md) sets Wednes
 | Oct 28 | Align requirement IDs and interfaces, assign tasks and milestones, and record owners for open decisions. | [Requirements and spec commit](https://github.com/BrianN45/Senior-Design/commit/38e9256) · [Task list commit](https://github.com/BrianN45/Senior-Design/commit/3e08bf3) |
 | Nov 4 | Map tests to requirements and review fixtures for age gating, schedule limits, accessibility, and owner publication timing. | [Test plan commit](https://github.com/BrianN45/Senior-Design/commit/6a4350b) |
 | Nov 11 | Review our responsible-use controls for alcohol offers, data retention, source permission, and credential handling. | [Ethics and audit commit](https://github.com/BrianN45/Senior-Design/commit/e33d2ff) |
-| Nov 18 | Check our slide order, speaking handoffs, timing, and anticipated questions. Capture rehearsal notes and advisor feedback. | [Run sheet commit](https://github.com/BrianN45/Senior-Design/commit/1a6d03a) · [Advisor feedback](Presentation/Advisor_Feedback.md) |
+| Nov 18 | Check our slide order, speaking handoffs, timing, and anticipated questions. Record advisor feedback. | [Run sheet commit](https://github.com/BrianN45/Senior-Design/commit/1a6d03a) · [Advisor feedback](Presentation/Advisor_Feedback.md) |
 | Nov 25 | Planned slot. Compare our report and notebook entries with the repository and identify missing effort evidence. | [Design notebook evidence](#individual-effort-evidence) |
 | Dec 2 | Planned slot. Review the report, confirm individual submission materials, and check the status of the signed advisor form. | [Report contents](#contents) |
 
-On November 16, we rehearsed all 11 slides for 30 minutes, including pauses and retries. We also received positive feedback on the slides by email with no requested revisions. [Rehearsal log](Presentation/Run_Sheet.md#rehearsal-log) · [Advisor feedback](Presentation/Advisor_Feedback.md)
-
 ### Individual effort evidence
 
-We use a planning estimate of **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. We include the documented 30-minute rehearsal in each member's Week 12 estimate. We still need to confirm actual hours and supply supporting records for the 45-hour criterion.
+We estimate **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. The course requires evidence of 45 hours per member.
 
-| Member | Dated evidence to cross-check | 14-week estimate | Documented |
-| --- | --- | --- | --- |
-| Brian Nguyen | [D2 and peer review](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Test Plan](https://github.com/BrianN45/Senior-Design/commit/6a4350b) · [Notebook](notebooks/nguyen_notebook.md) | 28-42 h | 0.5 h rehearsal |
-| Kaustubh Mathur | [User stories](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4) · [D1 revisions](https://github.com/BrianN45/Senior-Design/commit/d4aecd8) · [Notebook](notebooks/mathur_notebook.md) | 28-42 h | 0.5 h rehearsal |
-| Ved Sanap | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/54501dc) · [PR-01 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/sanap_notebook.md) | 28-42 h | 0.5 h rehearsal |
-| Meredith Bartel | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/f380900) · [PR-04 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/bartel_notebook.md) | 28-42 h | 0.5 h rehearsal |
-| Kiki Vasilev | [Project description](https://github.com/BrianN45/Senior-Design/commit/ae74784) · [PR-02 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/vasilev_notebook.md) | 28-42 h | 0.5 h rehearsal |
+| Member | Contribution records | 14-week estimate |
+| --- | --- | --- |
+| Brian Nguyen | [D2 and peer review](https://github.com/BrianN45/Senior-Design/commit/f2eb33b) · [Test Plan](https://github.com/BrianN45/Senior-Design/commit/6a4350b) · [Notebook](notebooks/nguyen_notebook.md) | 28-42 h |
+| Kaustubh Mathur | [User stories](https://github.com/BrianN45/Senior-Design/commit/cb9dbd4) · [D1 revisions](https://github.com/BrianN45/Senior-Design/commit/d4aecd8) · [Notebook](notebooks/mathur_notebook.md) | 28-42 h |
+| Ved Sanap | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/54501dc) · [PR-01 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/sanap_notebook.md) | 28-42 h |
+| Meredith Bartel | [Biography contribution](https://github.com/BrianN45/Senior-Design/commit/f380900) · [PR-04 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/bartel_notebook.md) | 28-42 h |
+| Kiki Vasilev | [Project description](https://github.com/BrianN45/Senior-Design/commit/ae74784) · [PR-02 assignment](Design_Diagrams/Peer_Review_Notes.md#feedback-and-action-items) · [Notebook](notebooks/vasilev_notebook.md) | 28-42 h |
