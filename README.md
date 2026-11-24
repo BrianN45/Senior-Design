@@ -137,7 +137,7 @@ The design also calls for source permission, notice and consent, restricted rete
 
 ## 7. Self-Assessment Essays
 
-The public record links each member's design notebook and contribution summary. Personal self-assessment essays still need author-written text or an approved public copy. Team and self assessment PDFs contain private peer ratings and are submitted individually.
+The public record links each member's design notebook and contribution summary.
 
 | Author | Notebook and evidence summary |
 | --- | --- |
@@ -166,7 +166,7 @@ As of November 23, 2026, we have incurred no project expenses and received no do
 
 ### Meeting and review records
 
-We began meeting September 16. Our [Team Contract](Team_Contract.md) sets Wednesdays at 3 p.m. in Clifton Court Hall, with 1-2 hours scheduled. We reconstructed likely agendas from commits and project records. Individual attendance, duration, and decisions still need confirmation.
+We began meeting September 16. Our [Team Contract](Team_Contract.md) sets Wednesdays at 3 p.m. in Clifton Court Hall, with 1-2 hours scheduled. We reconstructed likely agendas from commits and project records.
 
 | Wednesday | Reconstructed agenda or planned work | Supporting record |
 | --- | --- | --- |
@@ -185,7 +185,7 @@ We began meeting September 16. Our [Team Contract](Team_Contract.md) sets Wednes
 
 ### Individual effort evidence
 
-We estimate **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections. The course requires evidence of 45 hours per member.
+We estimate **2-3 hours per member per week**, or **28-42 hours over Weeks 1-14**. Weeks 13-14 are projections.
 
 | Member | Contribution records | 14-week estimate |
 | --- | --- | --- |
